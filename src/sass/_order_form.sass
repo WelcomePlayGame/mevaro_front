@@ -1,0 +1,52 @@
+.custom_modal
+    position: absolute
+    top: 16%
+    right: 0
+    bottom: 0
+    width: 30%
+    background-color: #fff
+    padding: 20px
+    transform: translateX(-100%)
+    transition: transform  0.9s 
+    &_open
+        transform: translateX(0)
+        box-shadow: 10px 10px 34px #000
+        z-index: 100
+.order_form_box
+    display: block
+    margin: auto
+    padding: 100px 0
+.order_form   
+    display: flex
+    flex-direction: column
+    align-items: center         
+.custom_overlay
+    background: red
+.box_meter
+    display: flex
+    justify-content: space-between    
+.input_text
+    text-align: center
+    width: 70px    
+.order_form_h4
+    font-size: 20px
+.order_form_h5
+    margin-top: 15px
+    font-size: 20px
+.order_form_btn
+    background: red
+    color: $white_text
+    font-weight: bold
+    font-size: 24px
+    border-radius: 5px    
+    margin-top: 20px      
+    border: none
+    padding: 10px 15px  
+.box_meter_list
+    margin-top: 30px    
+.box_meter_ul
+    border: 2px $green_background solid
+    padding: 15px
+    list-style: none  
+.box_meter_li   
+    font-size: 20px     

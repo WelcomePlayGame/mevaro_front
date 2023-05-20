@@ -1,0 +1,100 @@
+.page_product
+    padding-top: 190px
+.box-tab
+    margin-top: 25px    
+.page_box
+    display: flex    
+    justify-content: space-around  
+    position: relative
+.product_image
+    display: block
+    border-radius: 5px
+    width: 600px
+    height: 100%        
+    transition: transform 0.9s ease-in-out
+    object-fit: cover
+    cursor: zoom-in
+    &_zoom
+        display: block
+        margin: 0 auto
+        transform: scale(2)
+        position: absolute
+        top: 50%
+        left: 50%
+        z-index: 10
+        cursor: zoom-out
+        transform-origin: center center /* добавляем этот стиль, чтобы масштабирование происходило от центра изображения */
+        transition: transform 0.9s ease-in-out
+.page_box_h3
+    font-size: 30px
+    font-weight: bold        
+.page_box_li
+    list-style: none   
+    font-size: 20px
+.page_box_ul
+    display: flex
+    flex-direction: column
+    align-items: baseline        
+.page_product_price
+    padding: 20px 0
+.page_product_price_h4   
+    font-size: 20px
+.page_product_price_h4_span
+    font-size: 34px
+    font-weight: bold
+    color: red
+.back
+    display: flex   
+    padding: 0px 0px 20px 0px 
+    .back_btn
+        background: $green_background
+        color: $white_text
+        padding: 10px 20px  
+        border: none
+    .back_btn_categories
+        background: $green_background
+        color: $white_text
+        padding: 10px 20px  
+        outline-style: none
+        margin-left: 190px
+        border: none
+.tab-buttons
+    display: flex     
+    font-size: 24px
+    button
+        padding: 0 17px
+        margin: 0 10px
+        border: none
+        background: transparent
+        border-bottom: 2px solid
+        margin-bottom: 20px
+        &:focus
+            background: $green_background
+            color: $white_text
+            border: none
+        &:hover
+            background: $green_background
+            color: $white_text
+            border: none
+        &:active
+            background: $green_background
+            color: $white_text
+            border: none
+.tab-content_p
+    font-size: 20px   
+    text-align: justify
+    width: 600px         
+.order_btn
+    padding: 15px 50px
+    background: $red_text   
+    color: $white_text
+    font-weight: bold   
+    font-size: 20px     
+    border-radius: 10px
+    border: none
+    cursor: pointer   
+.tab-content_video
+    display: block
+    width: 600px    
+.page_box_describe
+    padding-left: 150px         
