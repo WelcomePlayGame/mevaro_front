@@ -62,14 +62,15 @@ export const Product = () => {
                                     <div className="page_product_price">
                                         <h4 className='page_product_price_h4'>Вартість: <spna className='page_product_price_h4_span'>{product.money * CURRENT_USD}</spna> грн</h4>
                                     </div>
-                                    <div>
-                                        <OrderButton product={product}/>
-                                    </div>
                                 </ul>
+                                <div>
+                                        <OrderButton product={product}/>
+                                </div>
                             </div>
                         </div>
+                        
                         <div className="box-tab">
-                        <Tab />
+                        <Tab id ={id}/>
                         </div>
 
                     </div>

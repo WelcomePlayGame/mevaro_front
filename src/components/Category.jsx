@@ -13,7 +13,7 @@ export const Category = ({ products = [] }) => {
   const currentUrl = `https://mevaro.kiev.ua${location.pathname}`;
   const navigate = useNavigate();
 
-  const [visibleProducts, setVisibleProducts] = useState(4); // Количество видимых продуктов
+  const [visibleProducts, setVisibleProducts] = useState(2); // Количество видимых продуктов
   const [isLoading, setIsLoading] = useState(false); // Состояние загрузки данных
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const Category = ({ products = [] }) => {
 
   const fetchMoreData = () => {
     // Увеличиваем количество видимых продуктов при загрузке дополнительных данных
-    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 4);
+    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 2);
   };
 
   const handleLoading = () => {
@@ -51,7 +51,7 @@ export const Category = ({ products = [] }) => {
         hasMore={visibleProducts < products.length}
         loader={<Preloader/>} // Индикатор загрузки
         scrollThreshold="10px" // Порог прокрутки для загрузки данных
-        endMessage={<div>Больше нет тканей</div>} // Сообщение, когда все продукты загружены
+        endMessage={<div>Тканини поки закінчились</div>} // Сообщение, когда все продукты загружены
         onScroll={null} 
         style={{ overflowX: 'hidden' }}
       >

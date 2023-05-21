@@ -25,7 +25,7 @@ export const ProductByCategory = ({ product }) => {
     <div className="col-md-6">
       <div className="product_card_by_id">
         <div className="product_image_by_id">
-          <img src={photoUrl} alt={title} className="products_image" />
+          <img rel="preload" src={photoUrl} alt={title} className="products_image" loading='lazy'/>
           <h2 className="product_card_h2">
             <span>{title}</span>
           </h2>

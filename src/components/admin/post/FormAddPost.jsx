@@ -2,6 +2,7 @@ import { useState } from "react"
 import { CategorySelect } from "./CategorySelect";
 import { URL, ADD, PRODUCTS } from "../../../cong"
 import { Helmet } from 'react-helmet';
+import { Preloader } from "../../Preloader";
 
 
 export const FormAddPost = () => {
@@ -16,10 +17,11 @@ export const FormAddPost = () => {
     const [category_id, setCategory_id] = useState('');
     const [price, setPrice] = useState('');
     const [test_mater, setTest_mater] = useState('');
+    const [isLoading, setIsLoading] = useState(false)
 
     const addPost = async (e) => {
         e.preventDefault();
-
+        setIsLoading(true)
         const formData = new FormData();
         formData.append("title", title);
         formData.append('description', description);
@@ -55,6 +57,9 @@ export const FormAddPost = () => {
                 </Helmet>
             </div>
             <form className="form_categories" onSubmit={addPost}>
+                <div className="preloader_post">
+                {isLoading && <Preloader/>}
+                </div>
                 <div className="form_box">
                     <div className="input_box">
                         <label>Добавити назву Товару</label>

@@ -1,19 +1,14 @@
-import {Comment} from './Comment'
-export const Comments = ({comments = []})=> {
 
+import { AddComment } from './AddComment';
+import { Comment } from './Comment';
 
-
-
-
-
-    return (
-
-        <section>
-            {
-                comments.map((el) => (
-                    <Comment id={el.id} {...el} />
-                ))
-            }
-        </section>
-    )
-}
+export const Comments = ({ comments = [] }, props) => {
+  return (
+    <section>
+      <>
+        <AddComment id={props.id} />
+        <Comment />
+      </>
+    </section>
+  );
+};

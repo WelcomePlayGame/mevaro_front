@@ -14,13 +14,18 @@ export const OrderPage = () => {
     const [price] = useState(+parseInt(data.price));
     const [meter] = useState(+parseInt(data.meter));
     const [title] = useState(data.title);
+    const [number, setNumber] = useState('')
 
-    console.log(data.id)
+   const min = 1;
+   const max = 10000;
+   
 
 
 
     const addOrder = async (e) => {
         e.preventDefault();
+        const countOrder = Math.floor(Math.random()*(max-min+1))+min;
+        setNumber('№'+countOrder);
 
         const formData = new FormData();
         formData.append('name', name);
@@ -31,7 +36,7 @@ export const OrderPage = () => {
         formData.append('price', price);
         formData.append('meter', meter);
         formData.append('title', title);
-
+        formData.append('number', number);
         try {
             const response = await fetch(`${URL}${ORDERS}${ADD}`, {
                 method: 'POST',
