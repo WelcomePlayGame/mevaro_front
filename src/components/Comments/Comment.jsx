@@ -5,7 +5,6 @@ export const Comment = (props) => {
 
     return (
         <section>
-            <p>{name ? "grg" : "efe"}</p>
             <p>{text}</p>
         </section>
     )

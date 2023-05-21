@@ -17,6 +17,7 @@ export const OrderButton = ({product})=> {
         <section>
         <>
         <button onClick={handleOrderOpen} className="order_btn">Додати</button>
+        <p className="order_hint">*фото не передає на 100% колір</p>
         <OrderModal isOpen={isModalOpen} closeModal={handleOrderClosed} product={product}/>
         </>            
         </section>

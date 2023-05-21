@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { URL, CATEGORIES, ADD } from '../../../cong'
 import { Helmet } from 'react-helmet';
+import { Preloader } from "../../Preloader";
 
 
 export const FormAddCategories = () => {
@@ -10,10 +11,11 @@ export const FormAddCategories = () => {
     const [description, setDescription] = useState('')
     const [file, setFile] = useState(undefined)
     const [confirm, setConfirm] = useState('Створити Категорію')
+    const [isLoading, setIsLoading] = useState(false)
 
     const addCategory = async (e) => {
         e.preventDefault();
-
+        setIsLoading(true)
         const formData = new FormData();
         formData.append('title', title);
         formData.append('url', url);
@@ -51,6 +53,7 @@ export const FormAddCategories = () => {
             </div>
 
             <form onSubmit={addCategory} className="form_categories">
+                {isLoading && <Preloader/>}
                 <div className="form_box">
                     <div className="input_box">
                         <label from="title">Добавити Категорію</label>

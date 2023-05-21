@@ -8,7 +8,7 @@ import { HiOutlineChatAlt2, HiFilm } from 'react-icons/hi'
 import { MyCustomVideo } from "./MyCustomVideo";
 
 
-export const Tab = () => {
+export const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('des');
   const [product, setProduct] = useState({})
   const { id } = useParams()
@@ -53,7 +53,7 @@ export const Tab = () => {
               className='content_video'
             />
         }
-        {activeTab === "comments" && <Comments />}
+        {activeTab === "comments" && <Comments id = {props.id} />}
       </div>
     </>
   );

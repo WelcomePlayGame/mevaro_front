@@ -6,11 +6,11 @@ export const StarRating = ()=> {
 
     return (
         <>
-    <FaStar/>
-    <FaStar/>
-    <FaStar/>
-    <FaStar/>
-    <FaStar/>
+    <FaStar className='star_rating' />
+    <FaStar className='star_rating' />
+    <FaStar className='star_rating' />
+    <FaStar className='star_rating' />
+    <FaStar className='star_rating' />
         </>
     )
 }

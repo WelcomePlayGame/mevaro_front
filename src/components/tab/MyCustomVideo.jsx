@@ -13,6 +13,7 @@ export const MyCustomVideo = (props) => {
                 playing={true}
                 controls={true}
                 mute={false}
+                loading={lazy}
             />
         </div>
     )
