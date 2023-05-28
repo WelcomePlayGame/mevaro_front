@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { URL, CATEGORIES, ADD } from '../../../cong'
+import { URL, CATEGORIES, ADD, USER, PASSWORD, SELECT } from '../../../cong'
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
 
@@ -12,6 +12,7 @@ export const FormAddCategories = () => {
     const [file, setFile] = useState(undefined)
     const [confirm, setConfirm] = useState('Створити Категорію')
     const [isLoading, setIsLoading] = useState(false)
+    const credentials = `${USER}:${PASSWORD}`
 
     const addCategory = async (e) => {
         e.preventDefault();
@@ -23,8 +24,11 @@ export const FormAddCategories = () => {
         formData.append('file', file);
 
         try {
-            const response = await fetch(`${URL}${CATEGORIES}${ADD}`, {
+            const response = await fetch(`${URL}${CATEGORIES}${SELECT}${ADD}`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Basic ${btoa(credentials)}`
+                },
                 body: formData,
             });
 

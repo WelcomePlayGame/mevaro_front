@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ORDERS, URL, ADD } from '../../cong';
+import { ORDERS, URL, ADD,SELECT, USER, PASSWORD } from '../../cong';
 export const OrderPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,6 +15,7 @@ export const OrderPage = () => {
     const [meter] = useState(+parseInt(data.meter));
     const [title] = useState(data.title);
     const [number, setNumber] = useState('')
+    const credentials = `${USER}:${PASSWORD}`
 
    const min = 1;
    const max = 10000;
@@ -40,6 +41,9 @@ export const OrderPage = () => {
         try {
             const response = await fetch(`${URL}${ORDERS}${ADD}`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Basic ${btoa(credentials)}`
+                },
                 body: formData
             });
         } catch (error) {

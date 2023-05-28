@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { CategorySelect } from "./CategorySelect";
-import { URL, ADD, PRODUCTS } from "../../../cong"
+import { URL, ADD, PRODUCTS, SELECT, USER, PASSWORD } from "../../../cong"
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
 
@@ -18,6 +18,7 @@ export const FormAddPost = () => {
     const [price, setPrice] = useState('');
     const [test_mater, setTest_mater] = useState('');
     const [isLoading, setIsLoading] = useState(false)
+    const credentials = `${USER}:${PASSWORD}`
 
     const addPost = async (e) => {
         e.preventDefault();
@@ -38,6 +39,9 @@ export const FormAddPost = () => {
 
         const response = await fetch(`${URL}${PRODUCTS}${ADD}`, {
             method: 'POST',
+            headers: {
+                'Authorization': `Basic ${btoa(credentials)}`
+            },
             body: formData,
         })
         if (response.ok) {
