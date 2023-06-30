@@ -13,7 +13,7 @@ export function Header() {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
-        console.log('1')
+       
     }
 
 

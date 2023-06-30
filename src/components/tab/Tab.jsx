@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ReactPlayer from 'react-player';
 import { getProductById } from '../../api'
 import { useParams } from 'react-router-dom'
 import { Comments } from "../Comments/Comments";

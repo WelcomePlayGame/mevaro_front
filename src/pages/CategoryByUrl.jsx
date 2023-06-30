@@ -10,7 +10,7 @@ export const CategoryByUrl = () => {
 
   useEffect(() => {
     getProductsByCategoriesUrl(url).then(data => setProducts(data.products))
-  }, [url])
+  }, [])
 
   return (
     <section className='list_products'>

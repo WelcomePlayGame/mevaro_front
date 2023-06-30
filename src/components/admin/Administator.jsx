@@ -1,6 +1,6 @@
 import {AddCategories} from './AddCategories'
 import {AddPost} from './AddPost'
-import {Dashboard} from './Dashboard'
+import {Dashboard} from './post/dashboard/Dashboard'
 import {Routes, Route} from 'react-router-dom'
 import { Helmet }from 'react-helmet';
 

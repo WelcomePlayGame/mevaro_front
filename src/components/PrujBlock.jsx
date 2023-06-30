@@ -19,7 +19,7 @@ export const PrujBlock = () => {
                             <div className="pruj_block_content_col">
                                 <h4 className="pruj_block_content_h4">Бюджетний Варіант</h4>
                                 <ul className="pruj_block_content_ul">
-                                    <li className="pruj_block_content_li pruj_block_content_price"> 3700 грн</li>
+                                    <li className="pruj_block_content_li pruj_block_content_price"> 3900 грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Гарантія 12 місяців</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Безкоштовна Доставка</li>

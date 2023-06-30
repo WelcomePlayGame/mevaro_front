@@ -37,7 +37,7 @@ export const FormAddPost = () => {
         formData.append('category_id', category_id);
         formData.append('money', money);
 
-        const response = await fetch(`${URL}${PRODUCTS}${ADD}`, {
+        const response = await fetch(`${URL}${PRODUCTS}${SELECT}${ADD}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Basic ${btoa(credentials)}`
@@ -155,6 +155,7 @@ export const FormAddPost = () => {
                     </div>
                 </div>
             </form>
+            
         </section>
     )
 }

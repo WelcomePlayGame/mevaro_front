@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet';
+import { TabDashboard } from './TabDashboard';
 
 export const Dashboard = () => {
 
@@ -11,7 +12,7 @@ export const Dashboard = () => {
                     <meta name="description" content="Місце роботи для адміну сайта" />
                 </Helmet>
             </div>
-            <h3>Dashboard</h3>
+            <><TabDashboard/></>
         </section>
 
     )

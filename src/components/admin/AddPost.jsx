@@ -1,4 +1,5 @@
 import { FormAddPost } from "./post/FormAddPost"
+import { Link } from "react-router-dom";
 
 
 export const AddPost = () => {
@@ -11,8 +12,10 @@ export const AddPost = () => {
                         <FormAddPost />
                     </div>
                     <div className="col-md-4">
-                        <div className="delete_by_id">
-                            <h5>Тут повинна бути конпка</h5>
+                        <div className="section_editor_button">
+                        <button className="editorPost" >
+                         <Link to={"/admin/addpost/editor/{id}"} className="editor_btn">Редагувати Товар</Link>
+                         </button>
                         </div>
                     </div>
                 </div>
