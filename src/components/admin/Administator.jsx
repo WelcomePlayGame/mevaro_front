@@ -3,6 +3,8 @@ import {AddPost} from './AddPost'
 import {Dashboard} from './post/dashboard/Dashboard'
 import {Routes, Route} from 'react-router-dom'
 import { Helmet }from 'react-helmet';
+import {EditorCategory} from "./post/editor/EditorCategory"
+import {EditorProduct} from './post/editor/EditorProduct'
 
 export const Administator = () => {
 
@@ -19,6 +21,8 @@ export const Administator = () => {
                 <Route path='/addcategories' element={<AddCategories/>}/>
                 <Route path='/addpost' element={<AddPost/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/category/editor/:id' element={<EditorCategory/>}/>
+                <Route path='/product/editor/:id' element={<EditorProduct/>} />
             </Routes>
         </section>
     )

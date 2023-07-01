@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { CategoriesTable } from "./info_dasboard/CategoriesTable";
+import {ProductsTable} from './info_dasboard/ProductsTable'
 export const TabDashboard = ()=> {
 
     const [isActive, setActive] = useState('categories')
@@ -37,6 +38,7 @@ return (
 
 <div className="tab_dashboard">
 {isActive === "categories" && <p className="tab-content_dashboard"><CategoriesTable/></p>}
+{isActive === "products" && <p className="tab-content_dashboard"><ProductsTable/></p>}
 </div>
 </>
 )

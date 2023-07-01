@@ -7,6 +7,7 @@ export const PRODUCTS = `products/`
 export const CURRENT_USD = 40
 export const ORDERS = 'orders/'
 export const CATEGORY = 'category/'
+export const UPDATE = 'update/'
 export const SELECT = 'select/'
 export const USER = 'mevaro'
 export const PASSWORD = 'mevaro'

@@ -20,9 +20,17 @@ export const CategoriesTable = ()=> {
             <div className="col-md-12">
             <table className="table">
                 <thead>
-                    <th colSpan={100} className="th_table">
+                    <tr>
+                        <th colSpan={100} className="th_table">
                         <span className="th_table_span">Список Категорій</span>
-                    </th>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>№</th>
+                        <th>Назва</th>
+                        <th>URl</th>
+                        <th>Кількість товарів</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {
@@ -31,9 +39,10 @@ export const CategoriesTable = ()=> {
                             <td className="td_table">{category.id}</td>
                             <td className="td_table">{category.title}</td>
                             <td className="td_table">{category.url}</td>
+                            <td>{category.products.length}</td>
                             <td className="td_table">
                                 <button>
-                                    <Link to={"/admin/category/editor/{id}"}>Редагувати Категорію</Link>
+                                    <Link to={`/admin/category/editor/${category.id}`}>Редагувати</Link>
                                 </button>
                             </td>
                         </tr>
