@@ -1,4 +1,3 @@
-import { DeleteAllCategories } from './form/DeleteAllCategories'
 import { FormAddCategories } from './form/FormAddCategories'
 export const AddCategories = () => {
 
@@ -7,11 +6,8 @@ export const AddCategories = () => {
         <section>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                     <FormAddCategories/>
-                    </div>
-                    <div className="col-md-4">
-                    <DeleteAllCategories/>
                     </div>
                 </div>
             </div>

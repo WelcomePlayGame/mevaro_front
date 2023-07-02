@@ -12,7 +12,7 @@ export const EditorCategory = () => {
     const [url, setUrl] = useState('');
     const [description, setDescription] = useState('')
     const [file, setFile] = useState(undefined)
-    const [confirm] = useState('Створити Категорію')
+    const [confirm] = useState('Завершити Редагування')
     const [isLoading, setIsLoading] = useState(false)
     const credentials = `${USER}:${PASSWORD}`
 
@@ -60,7 +60,7 @@ export const EditorCategory = () => {
             <form onSubmit={addCategory} className="form_editor_category">
                 {isLoading && <Preloader/>}
                 <div className="form_editor_box">
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label from="title">Змінити Категорію</label>
                         <input
                             type="text"
@@ -71,7 +71,7 @@ export const EditorCategory = () => {
                             id="title"
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label htmlFor="url">Змінити URL</label>
                         <input
                             type="text"
@@ -82,7 +82,7 @@ export const EditorCategory = () => {
                             onChange={(e) => setUrl(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label htmlFor="description">Змінити URL</label>
                         <textarea
                             type="textarea"
@@ -93,7 +93,7 @@ export const EditorCategory = () => {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label htmlFor="photo">Перезати Файл</label>
                         <input
                             type="file"
@@ -103,8 +103,8 @@ export const EditorCategory = () => {
                             onChange={(e) => setFile(e.target.files[0])}
                         />
                     </div>
-                    <div className="input_box">
-                        <button type="submit" className="post_button">{confirm}</button>
+                    <div className="input_editor_box">
+                        <button type="submit" className="editor_button">{confirm}</button>
                     </div>
                 </div>
             </form>
