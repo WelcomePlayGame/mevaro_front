@@ -20,11 +20,16 @@
 .delete_by_id
     margin-top: 130px
 .post_button
-    background: #000
+    background: $red_background
     color: #fff
-    transition: 1s
+    margin-top: 30px
+    border: none
+    padding: 10px
+    border-radius: 10px
+    font-size: 24px
     &:hover
         background: grey
+        transition: 2s
     &::after
         content: ''
         display: block
@@ -78,8 +83,29 @@ tr
 .form_editor_box
     padding-top: 100px
     display: flex
+
     flex-direction: column
 .order_button_false
     background: $red_background
 .order_button_true
     background: $green_background
+
+    flex-direction: column
+.input_editor_box
+    display: flex
+    flex-direction: column
+    width: 600px
+.box_editor_categories
+    width: 100%
+    display: flex
+    justify-content: center
+.editor_button
+    background: $red_background
+    margin-top: 30px
+    color: $white_text
+    font-weight: bold
+    font-size: 24px
+    border-radius: 10px
+    border: none
+    &:hover
+        background: $black_background

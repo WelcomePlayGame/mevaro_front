@@ -8,15 +8,8 @@ export const AddPost = () => {
         <section>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                         <FormAddPost />
-                    </div>
-                    <div className="col-md-4">
-                        <div className="section_editor_button">
-                        <button className="editorPost" >
-                         <Link to={"/admin/addpost/editor/{id}"} className="editor_btn">Редагувати Товар</Link>
-                         </button>
-                        </div>
                     </div>
                 </div>
             </div>

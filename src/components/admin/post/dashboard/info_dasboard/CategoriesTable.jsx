@@ -38,10 +38,10 @@ export const CategoriesTable = ()=> {
                         <tr key={category.id}>
                             <td className="td_table">{category.id}</td>
                             <td className="td_table">{category.title}</td>
-                            <td className="td_table">{category.url}</td>
+                            <td className="td_table"><Link to={`/categories/${category.url}`}>{category.url}</Link></td>
                             <td>{category.products.length}</td>
                             <td className="td_table">
-                                <button>
+                                <button className="">
                                     <Link to={`/admin/category/editor/${category.id}`}>Редагувати</Link>
                                 </button>
                             </td>

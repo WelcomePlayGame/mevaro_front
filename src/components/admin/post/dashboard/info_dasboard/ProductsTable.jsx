@@ -20,7 +20,7 @@ return (
          <table className="table">
             <thead>
                 <tr>
-                    <th colSpan={100}>Список Продуктів</th>
+                    <th colSpan={100} className="th_table">Список Продуктів</th>
                 </tr>
                 <tr>
                     <th>№</th>
@@ -33,9 +33,8 @@ return (
                         <tr key={product.id}>
                             <td className="td_table">{product.id}</td>
                             <td className="td_table">{product.title}</td>
-                            <td className="td_table">{product.width}</td>
-                            <td>
-                                <button>
+                            <td className="td_table">
+                                <button >
                                 <Link to={`/admin/product/editor/${product.id}`}>Редагувати</Link>
                                 </button>
                             </td>

@@ -56,19 +56,19 @@ export const EditorProduct = () => {
 
 
     return (
-        <section className="box_post">
+        <section className="box_editor_categories">
             <div>
                 <Helmet>
                     <title>Редагувати Товар</title>
                     <meta name="description" content="Місце роботи для адміну сайта" />
                 </Helmet>
             </div>
-            <form className="form_editor_product" onSubmit={addPost}>
+            <form className="form_editor_category" onSubmit={addPost}>
                 <div className="preloader_post">
                 {isLoading && <Preloader/>}
                 </div>
                 <div className="form_editor_box">
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати назву Товару</label>
                         <input type="text"
                             name="title"
@@ -77,7 +77,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати опис</label>
                         <textarea type="text"
                             name="description"
@@ -86,7 +86,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Замінти Фото</label>
                         <input type="file"
                             name="photo"
@@ -94,7 +94,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати ширину тканини</label>
                         <input type="text"
                             name="width"
@@ -103,7 +103,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setWidth(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати зміст</label>
                         <input type="text"
                             name="compoud"
@@ -112,7 +112,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setCompoud(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати щільність</label>
                         <input type="text"
                             name="density"
@@ -121,7 +121,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setDensity(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Редагувати Тест Мантердейла</label>
                         <input type="text"
                             name="test_mater"
@@ -130,7 +130,7 @@ export const EditorProduct = () => {
                             onChange={(e) => setTest_mater(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Замінти Відео</label>
                         <input type="file"
                             accept="video/*"
@@ -139,12 +139,12 @@ export const EditorProduct = () => {
                         />
 
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Змінити Категорію</label>
                         <CategorySelect onChange={(e) => setCategory_id(e.target.value)} name="id" />
 
                     </div>
-                    <div className="input_box">
+                    <div className="input_editor_box">
                         <label>Змінити Вартість в $</label>
                         <input type="text"
                             name="price"
@@ -153,8 +153,8 @@ export const EditorProduct = () => {
                             onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
-                    <div className="input_box">
-                        <button type="submit" className="post_button">Закінчити Редагування</button>
+                    <div className="input_editor_box">
+                        <button type="submit" className="editor_button">Закінчити Редагування</button>
                     </div>
                 </div>
             </form>
