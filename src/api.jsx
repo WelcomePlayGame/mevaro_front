@@ -1,4 +1,5 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD} from './cong'
+import { wait } from '@testing-library/user-event/dist/utils';
+import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS} from './cong'
 const credentials = `${USER}:${PASSWORD}`
 
 export const getAllCategories = async () => {
@@ -13,6 +14,7 @@ export const getAllCategories = async () => {
     console.table(data);
     return await data;
 }
+
 export const getAllProducts = async () => {
   try {
     const response = await fetch(`${URL}${PRODUCTS}`, {
@@ -34,6 +36,28 @@ export const getAllProducts = async () => {
   }
 };
 
+export const getAllOrders = async () => {
+  
+  try {
+    const response = await fetch(`${URL}${ORDERS}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Basic ${btoa(credentials)}`
+      }
+    });
+    if(response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+    }
+
+  } catch (error) {
+    console.error(error)
+    throw error;
+  }
+
+}
 
 export const getProductsByCategoriesUrl = async (url) => {
     try {

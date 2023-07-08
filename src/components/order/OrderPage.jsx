@@ -14,19 +14,14 @@ export const OrderPage = () => {
     const [price] = useState(+parseInt(data.price));
     const [meter] = useState(+parseInt(data.meter));
     const [title] = useState(data.title);
-    const [number, setNumber] = useState('')
     const credentials = `${USER}:${PASSWORD}`
 
-   const min = 1;
-   const max = 10000;
    
-
 
 
     const addOrder = async (e) => {
         e.preventDefault();
-        const countOrder = Math.floor(Math.random()*(max-min+1))+min;
-        setNumber('№'+countOrder);
+
 
         const formData = new FormData();
         formData.append('name', name);
@@ -37,9 +32,9 @@ export const OrderPage = () => {
         formData.append('price', price);
         formData.append('meter', meter);
         formData.append('title', title);
-        formData.append('number', number);
+        
         try {
-            const response = await fetch(`${URL}${ORDERS}${ADD}`, {
+            const response = await fetch(`${URL}${ORDERS}${SELECT}${ADD}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Basic ${btoa(credentials)}`
@@ -86,6 +81,9 @@ export const OrderPage = () => {
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
                                         placeholder='+380_ _ _ _ _'
+                                        pattern='[0-9]*'
+                                        maxLength={10}
+                                        title='Напишиіть мобільний номер'
                                     />
                                 </div>
                                 <div className="ordered_box_input">
@@ -120,7 +118,7 @@ export const OrderPage = () => {
                                 <li className='ordered_li'>Загальна Вартість: {price} грн</li>
                                 <li className='ordered_li'>Загальний метраж: {meter} метрів</li>
                                 <li className='ordered_li'>Імя та Призвіще: {name}</li>
-                                <li className='ordered_li'>Мобільний Номер: {phone}</li>
+                                <li className='ordered_li'>Мобільний Номер: +38{phone}</li>
                                 <li className='ordered_li'>Місто для Відправки: {city}</li>
                                 <li className='ordered_li'>Номер Нової Почти: {poshta}</li>
                             </ul>
