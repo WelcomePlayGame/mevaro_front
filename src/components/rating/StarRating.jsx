@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-export const StarRating = ({ rating, onChange }) => {
+export const StarRating = ({onChange}) => {
   const [selectedRating, setSelectedRating] = useState(0);
 
   const handleRatingClick = (newRating) => {

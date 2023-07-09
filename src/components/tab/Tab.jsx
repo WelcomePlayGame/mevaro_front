@@ -52,7 +52,7 @@ export const Tab = (props) => {
               className='content_video'
             />
         }
-        {activeTab === "comments" && <Comments id = {props.id} />}
+        {activeTab === "comments" && <Comments id = {id} />}
       </div>
     </>
   );
