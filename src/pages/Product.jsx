@@ -58,7 +58,7 @@ export const Product = () => {
                                     <li className='page_box_li'>Ширина: {product.width} см</li>
                                     <li className='page_box_li'>Склад: {product.compoud}</li>
                                     <li className='page_box_li'>Щільність: {product.density} г/кв.метр</li>
-                                    <li className='page_box_li'>Тест Мантирдейла: {product.test_mater} циклів</li>
+                                    <li className='page_box_li'>Тест Мантирдейла: {product.testMater} циклів</li>
                                     <div className="page_product_price">
                                         <h4 className='page_product_price_h4'>Вартість: <spna className='page_product_price_h4_span'>{product.money * CURRENT_USD}</spna> грн</h4>
                                     </div>

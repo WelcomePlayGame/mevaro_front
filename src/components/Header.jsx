@@ -33,10 +33,10 @@ export function Header() {
                             <li className="menu_item"><a href="/#comment_id" className="menu_link" title="Відгуки о Меваро">Відгуки</a></li>
                         )}
                         {isNotCategories && (
-                            <li className="menu_item"><a href="/#box_slider" className="menu_link" title="Зразки робот від Меваро">Наші роботи</a></li>
+                            <li className="menu_item"><a href="#box_slider" className="menu_link" title="Зразки робот від Меваро">Наші роботи</a></li>
                         )}
                         <li className="menu_item"><Link to="/categories" className="menu_link" title="Тканини які використовує Меваро">Зразки тканин</Link></li>
-                        <li className="menu_item"><Link to="https://mevaro.kiev.ua/#pruj" className="menu_link" title="Контакти компанії Меваро">Замінити Пружинний Блок</Link></li>
+                        <li className="menu_item"><Link to="/#pruj" className="menu_link" title="Контакти компанії Меваро">Замінити Пружинний Блок</Link></li>
                     </ul>
                 </div>
                 <div className={`hamburger ${isOpen ? 'hamburger_active' : ''}`} onClick={toggleMenu}>
