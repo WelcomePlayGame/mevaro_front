@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import {getAllOrders} from '../../../../../api'
+import { UpdateConfirmOrder } from '../../../../order/UpdateConfirmOrder';
 export const OrderTable = () => {
 
     const [orders, setOrders] = useState([]);
@@ -11,6 +12,7 @@ export const OrderTable = () => {
         });
     }, []);
 
+ 
 
     return (
 
@@ -41,9 +43,7 @@ export const OrderTable = () => {
                              <td className="td_table">{order.city}</td>
                              <td className="td_table">{order.poshta}</td>
                              <td>
-                                <button className={`${order.confirm ===     false ? "order_button_false" : "order_button_true"}`}>
-                                <p>Підтвердити?</p>
-                                </button>
+                                <UpdateConfirmOrder order={order}/>
                              </td>
                          </tr>
                      ))

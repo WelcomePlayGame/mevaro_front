@@ -41,6 +41,7 @@ export const OrderPage = () => {
                 },
                 body: formData
             });
+            return response;
         } catch (error) {
             console.error(error)
         }
@@ -70,6 +71,10 @@ export const OrderPage = () => {
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         placeholder='Імя та Призвіще'
+                                        minLength={5}
+                                        pattern='^[А-Яа-яЁёA-Za-z]+$'
+                                        title='Введіть Ваше Імя та Призвіще'
+                                        required
                                     />
                                 </div>
                                 <div className="ordered_box_input">
@@ -83,7 +88,9 @@ export const OrderPage = () => {
                                         placeholder='+380_ _ _ _ _'
                                         pattern='[0-9]*'
                                         maxLength={10}
+                                        minLength={10}
                                         title='Напишиіть мобільний номер'
+                                        required
                                     />
                                 </div>
                                 <div className="ordered_box_input">
@@ -95,6 +102,10 @@ export const OrderPage = () => {
                                         value={city}
                                         onChange={(e) => setCity(e.target.value)}
                                         placeholder='Укажіть місто'
+                                        pattern='^[А-Яа-яЁёA-Za-z]+$'
+                                        minLength={3}
+                                        title='Введіть назву населенного пункту'
+                                        required
                                     />
                                 </div>
                                 <div className="ordered_box_input">
@@ -106,6 +117,11 @@ export const OrderPage = () => {
                                         value={poshta}
                                         onChange={(e) => setPoshta(e.target.value)}
                                         placeholder='№'
+                                        pattern='[0-9]*'
+                                        minLength={1}
+                                        maxLength={4}
+                                        title='Введіть Номер Нової Почти'
+                                        required
                                     />
                                 </div>
                                 <button type='submit' className='ordered_btn'>Оформити</button>

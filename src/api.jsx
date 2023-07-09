@@ -1,5 +1,4 @@
-import { wait } from '@testing-library/user-event/dist/utils';
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS} from './cong'
+import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM} from './cong'
 const credentials = `${USER}:${PASSWORD}`
 
 export const getAllCategories = async () => {
@@ -111,7 +110,7 @@ export const  findUrlCategoriesViaIdByProduct = async (id)=> {
       }
     })
     if(!response.ok) {
-      return new Error('Response not ok - `${URL}${id}`')
+      return new Error(`Response ont ok - ${URL}${CATEGORIES}${CATEGORY}${id}`)
     } 
     return response.json();
 
@@ -119,7 +118,25 @@ export const  findUrlCategoriesViaIdByProduct = async (id)=> {
     console.log(error)
     return error;
   }
-
-
+  
 }
   
+export const updateConfirmOrder = async (id) => {
+
+  try {
+    const response =  await fetch(`${URL}${UPDATE}${CONFIRM}${id}`, {
+      method: "PATCH",
+      headers: {
+        'Authorization': `Basic ${btoa(credentials)}`
+      }
+    })
+    if(!response.ok) {
+      return new Error(`Response not ok - ${URL}${UPDATE}${CONFIRM}${id}`)
+    }
+    return response;
+  } catch (error) {
+    console.error(error)
+    return error;
+  }
+
+}
