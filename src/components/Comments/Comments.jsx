@@ -2,11 +2,11 @@
 import { AddComment } from './AddComment';
 import { Comment } from './Comment';
 
-export const Comments = ({ comments = [] }, props) => {
+export const Comments = (id) => {
   return (
     <section>
       <>
-        <AddComment id={props.id} />
+        <AddComment id={id} />
         <Comment />
       </>
     </section>
