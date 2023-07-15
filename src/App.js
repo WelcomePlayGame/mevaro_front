@@ -12,6 +12,8 @@ import { CategoryByUrl } from './pages/CategoryByUrl';
 import { Product } from './pages/Product';
 import {OrderPage} from './components/order/OrderPage'
 import {Success} from './components/success/Success'
+import {FAQ} from './pages/FAQ'
+import { POST } from './pages/Post';
 
 
 
@@ -28,6 +30,8 @@ function App() {
             <Route path='/' element={<Main/>}/>
             <Route path='/order' element={<OrderPage/>}/>
             <Route path='/success' element={<Success/>}/>
+            <Route path='/faq' element={<FAQ/>}/>
+            <Route path='/post' element={<POST/>}/>
             <Route path='/categories/' element={<Categories/>} exact />
             <Route path='/categories/:url' element={<CategoryByUrl />} />
             <Route path='/:url/:id' element={<Product/>}/>
