@@ -3,7 +3,7 @@ import { useState } from "react";
 import { URL, COMMENTS, SELECT, ADD, USER, PASSWORD } from "../../cong";
 
 export const AddComment = (props) => {
-  const AddComment = (id) => {
+  const AddCommentofPost = (id) => {
     const [rating, setRating] = useState(`0`);
     const [name, setName] = useState(``);
     const [phone, setPhone] = useState(``);
@@ -48,7 +48,7 @@ export const AddComment = (props) => {
             <>
               <StarRating onChange={handleRatingChange} />
             </>
-            <form className="addComment_form" onSubmit={addComment}>
+            <form className="addComment_form" onSubmit={AddCommentofPost}>
               <div className="addCommentBox">
                 <input
                   type="text"
