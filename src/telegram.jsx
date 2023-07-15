@@ -1,8 +1,16 @@
 export const sendOrderToTelegram = (orderData) => {
   const botToken = "6223153005:AAELW8PsEdCcfYCz4l2uHw6KHVaj1EIKjN4";
-  const chatId = "Mevaro";
+  const chatId = `-1001941018057`;
 
-  const message = `Новый заказ:\n\nИмя: ${orderData.name}\nТелефон: ${orderData.phone}\nПродукт: ${orderData.product}`;
+  const message = `Новый заказ:\n\n
+  Ткань: ${orderData.title}\n
+  Имя Заказчика: ${orderData.name}\n
+  Телефон: ${orderData.phone}\n
+  Город для Отправки: ${orderData.city}\n
+  Номер Новой Почты: ${orderData.poshta}\n
+  Общая стоимость: ${orderData.price} грн \n
+  Метраж: ${orderData.meter} метров\n
+  `;
 
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
   const options = {

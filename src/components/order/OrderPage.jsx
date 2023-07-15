@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ORDERS, URL, ADD, SELECT, USER, PASSWORD } from "../../cong";
 import { sendOrderToTelegram } from "../../telegram";
 export const OrderPage = () => {
@@ -21,11 +21,14 @@ export const OrderPage = () => {
     e.preventDefault();
 
     const orderData = {
+      title: title,
       name: name,
       phone: phone,
-      product: title,
+      city: city,
+      poshta: poshta,
+      price: price,
+      meter: meter,
     };
-    sendOrderToTelegram(orderData);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -45,18 +48,23 @@ export const OrderPage = () => {
         },
         body: formData,
       });
+
+      try {
+        sendOrderToTelegram(orderData);
+      } catch (error) {
+        console.error("Ошибка при отправке заказа в Telegram:", error);
+      }
+      navigate("/success", {
+        state: {
+          id: product_id,
+          name: name,
+          title: title,
+        },
+      });
       return response;
     } catch (error) {
       console.error(error);
     }
-
-    navigate("/success", {
-      state: {
-        id: product_id,
-        name: name,
-        title: title,
-      },
-    });
   };
 
   return (
@@ -136,6 +144,9 @@ export const OrderPage = () => {
                   Оформити
                 </button>
               </form>
+              <Link to={"/faq"} target="_black" className="faq">
+                *Ознайомлення з правилами
+              </Link>
             </div>
             <div className="ordered_box_list">
               <img
@@ -150,7 +161,7 @@ export const OrderPage = () => {
                 <li className="ordered_li">Імя та Призвіще: {name}</li>
                 <li className="ordered_li">Мобільний Номер: +38{phone}</li>
                 <li className="ordered_li">Місто для Відправки: {city}</li>
-                <li className="ordered_li">Номер Нової Почти: {poshta}</li>
+                <li className="ordered_li">Номер Нової Пошти: {poshta}</li>
               </ul>
             </div>
           </div>
