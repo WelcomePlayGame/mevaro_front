@@ -13,7 +13,7 @@ export const AddComment = (id) => {
   };
 
   const addComment = async (e) => {
-    e.preventdefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append(`name`, name);
     formData.append(`phone`, phone);
