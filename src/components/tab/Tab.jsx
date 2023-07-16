@@ -10,7 +10,7 @@ import { MyCustomVideo } from "./MyCustomVideo";
 export const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('des');
   const [product, setProduct] = useState({})
-  const { id } = useParams()
+  const {id}  = useParams()
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
