@@ -7,7 +7,6 @@ export const Comments = (id) => {
     <section>
       <>
         <AddComment id={id} />
-        <Comment />
       </>
     </section>
   );

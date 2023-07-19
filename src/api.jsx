@@ -1,4 +1,4 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM} from './cong'
+import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT} from './cong'
 const credentials = `${USER}:${PASSWORD}`
 
 export const getAllCategories = async () => {
@@ -59,24 +59,24 @@ export const getAllOrders = async () => {
 }
 
 export const getProductsByCategoriesUrl = async (url) => {
-    try {
-      const response = await fetch(`${URL}${CATEGORIES}${url}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Basic ${btoa(credentials)}`
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Response not ok');
+  try {
+    const response = await fetch(`${URL}${CATEGORIES}${url}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Basic ${btoa(credentials)}`
       }
-      console.table(response)
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-      return null;
+    });
+    if (!response.ok) {
+      throw new Error('Response not ok');
     }
-    
+    console.table(response)
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
   }
+  
+}
 
 
 export const getProductById = async (id) => {
@@ -140,3 +140,25 @@ export const updateConfirmOrder = async (id) => {
   }
 
 }
+
+
+export const getListCommentByProduct = async (id) => {
+  try {
+    const response = await fetch(`${URL}${COMMENTS}${PRODUCT}${id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Basic ${btoa(credentials)}`
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Response not ok');
+    }
+    console.table(response)
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+  
+}
+

@@ -108,7 +108,7 @@ export function Header() {
             )}
             {!isNotCategories && (
               <li className="menu_item">
-                <Link to="/faq" className="menu_link" title="FAQ від Меваро">
+                <Link to="/contact" className="menu_link" title="FAQ від Меваро">
                   Наші Контакти
                 </Link>
               </li>

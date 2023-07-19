@@ -14,3 +14,4 @@ export const PASSWORD = "mevaro";
 export const CONFIRM = "confirm/";
 export const COMMENTS = `comments/`;
 export const COMMENT = `comment/`;
+export const PRODUCT = `product/`

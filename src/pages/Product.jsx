@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import {findUrlCategoriesViaIdByProduct} from '../api'
 import { OrderButton } from '../components/order/OrderButton'
 import { StarRating } from '../components/rating/StarRating'
+import { SliderProduct } from '../components/Slider/SliderProduct'
 
 
 
@@ -39,7 +40,33 @@ export const Product = () => {
             <Helmet>
                 <title>{`✅ Тканина ${product.title} прекрасно підійде для Ваших меблів`}</title>
                 <meta name="description" content={`Оберіть для себе якісну тканину. Мебельна тканина ${product.title} зі щільностью ${product.density} гр/м2 та тестом Мантердейла ${product.test_mater}. Широкий вибір ткани на любий смак.`} />
-                <link rel="canonical" href={`https://mevaro.kiev.ua/categories//${categoryUrl}/${id}`} />
+                <meta name="keywords" content={`тканини для дивану, тканина ${product.title} для вашого дивану, ${product.title} якісні тканини`}/>
+                <link rel="canonical" href={`https://mevaro.kiev.ua/categories/${categoryUrl}/${id}`} />
+                <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "${product.title}",
+        "image": "${product.photoUrl}",
+        "description": "${product.description}",
+        "brand": {
+          "@type": "Brand",
+          "name": "Mevaro"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "${product.price}",
+          "priceCurrency": "UAH",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "Mevaro"
+          }
+        }
+      }
+    `}
+  </script>
             </Helmet>
             <div className="container">
                 <div className="row">
@@ -53,7 +80,7 @@ export const Product = () => {
                             </div>
                             <div className="page_box_describe">
                                 <StarRating/>
-                                <h3 className='page_box_h3'>{product.title}</h3>
+                                <h2 className='page_box_h3'>{product.title}</h2>
                                 <ul className='page_box_ul' >
                                     <li className='page_box_li'>Ширина: {product.width} см</li>
                                     <li className='page_box_li'>Склад: {product.compoud}</li>
@@ -68,7 +95,9 @@ export const Product = () => {
                                 </div>
                             </div>
                         </div>
-                        
+                        <div>
+                            {/* <SliderProduct/> */}
+                        </div>
                         <div className="box-tab">
                         <Tab id ={id}/>
                         </div>

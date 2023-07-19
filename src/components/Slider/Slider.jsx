@@ -4,9 +4,6 @@ import { EffectFade, Navigation, Pagination } from "swiper";
 
 export const Slider = (props) => {
 
-    const {
-
-    } = props;
 
     register();
 
