@@ -27,19 +27,19 @@ export const Tab = (props) => {
           className={activeTab === "des" ? "btn_tab_active" : ""}
           onClick={() => handleTabClick("des")}
         >
-          <h5>{<FaThumbtack />} Опис тканини</h5>
+          <h3>{<FaThumbtack />} Опис тканини</h3>
         </button>
         <button
           className={`tab_video ${activeTab === "video" ? "btn_tab_active" : ""}`}
           onClick={() => handleTabClick("video")}
         >
-          <h5>{<HiFilm />} Відео тканини</h5>
+          <h3>{<HiFilm />} Відео тканини</h3>
         </button>
         <button
           className={activeTab === "comments" ? "btn_tab_active" : ""}
           onClick={() => handleTabClick("comments")}
         >
-          <h5>{<HiOutlineChatAlt2 />}  Комментарі</h5>
+          <h3>{<HiOutlineChatAlt2 />}  Комментарі</h3>
         </button>
       </div>
       <div className="tab-content">

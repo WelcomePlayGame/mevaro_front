@@ -15,18 +15,20 @@ export const Comment = (props) => {
   
     return (
       <section>
-        <div >
-          <div>
-            {Array.isArray(comments) &&
-              comments.map((props) => (
-                <div key={props.id}>
-                  <h4>{props.name}</h4>
-                  <span>{props.rating}</span>
-                  <h5>{props.comment}</h5>
-                </div>
-              ))}
-          </div>
-        </div>
+        {
+          comments.map((props)=> (
+            <div className="reviews_box">
+              <div className="reviews_box_top">
+                <div className="reviews_box_name">{props.name}</div>
+                <div className="reviews_box_rating">{props.rating}</div>
+              </div>
+              <div className="reviews_box_des">
+                <b>{props.comment}</b>
+              </div>
+            </div>
+
+          ))
+        }
       </section>
     );
   };

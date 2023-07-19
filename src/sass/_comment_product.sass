@@ -9,22 +9,45 @@
     margin-top: 15px
     border: none
 .addCommentBox_btn
-     margin-top: 20px
-     border-radius: 10px    
-     background: $green_background
-     border: none
-     color: $white_text
-     padding: 10px 20px
-     font-weight: bold
+    margin-top: 20px
+    border-radius: 10px
+    background: $green_background
+    border: none
+    color: $white_text
+    padding: 10px 20px
+    font-weight: bold
 .centeredPlaceholder
-    text-align: center     
+    text-align: center
 .addComment_form
-    background: rgba($black_background, 0.3 ) 
+    background: rgba($black_background, 0.5)
     padding: 10px
-    border-radius: 10px   
+    border-radius: 10px
 .addComment_hr
-    margin: 30px 0px 0px 0px   
+    margin: 30px 0px 0px 0px
 .star_rating
     font-size: 24px
     &:hover
         color: $yellow_background
+.reviews_box_top
+    display: flex
+    justify-content: space-between
+.reviews_box
+    background: rgba($black_background, 0.5 )
+    margin-top: 30px
+    padding: 10px 20px
+    color: $white_text
+    border-radius: 10px
+.reviews_box_name
+    font-size: 18px
+.reviews_box_des
+    margin-top: 10px
+    font-size: 20px
+    &::before
+        content: ""
+        display: block
+        height: 2px
+        width: 70%
+        background: $green_background
+        margin: 0px auto 10px auto
+.addComment
+    width: 600px
