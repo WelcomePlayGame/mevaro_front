@@ -1,43 +1,108 @@
-import { useEffect, useState } from 'react';
-import {getAllProducts} from '../../api'
-import { register } from 'swiper/element/bundle';
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { getAllProducts, findUrlCategoriesViaIdByProduct } from '../../api'
 
+// Import Swiper styles
+import 'swiper/css';
+import { lazy, useEffect, useState } from 'react';
+import { Preloader } from '../Preloader';
 
 export const SliderProduct = () => {
-    const [products, setProducts] = useState([]);
-  
-    useEffect(() => {
-      getAllProducts().then((data) => {
-        setProducts(data);
-      });
-    }, []);
-  
-    useEffect(() => {
-      register();
-    }, []);
-  
-    const displayedProducts = products.slice(0, 3); // Ограничение до 3 товаров
-  
-    return (
-      <>
-        <swiper-container
-            spaceBetween={30}
-            effect={"fade"}
-            navigation={true}
-            pagination={{
-            clickable: true,
-            }}
-             modules={[EffectFade, Navigation, Pagination]}
-            className="mySwiper"
-        >
-          {displayedProducts.map((product) => (
-            <swiper-slide key={product.id}>
-              <img src={product.photoUrl} alt={product.title} />
-            </swiper-slide>
-          ))}
-        </swiper-container>
-      </>
-    );
-  }
-  
+  const [productList, setProducts] = useState([]);
+  const [categoryUrls, setCategoryUrls] = useState([]);
+
+  useEffect(() => {
+    getAllProducts().then((data) => {
+      setProducts(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const fetchCategoryUrls = async () => {
+      const urls = [];
+      for (const product of productList) {
+        try {
+          const categoryInfo = await findUrlCategoriesViaIdByProduct(product.id);
+          urls.push(categoryInfo); // Предполагаем, что здесь возвращается строка URL-адреса категории
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      setCategoryUrls(urls);
+    };
+
+    fetchCategoryUrls();
+  }, [productList]);
+
+
+  return (
+   <>
+   {
+    categoryUrls.length > 0 ? (
+      <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      loading={lazy}
+      breakpoints={{
+        375: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        390: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        576: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        767: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        991: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        1200: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        1500: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {
+        productList.map((props) => (
+          <SwiperSlide key={props.id} className='SliderProduct'>
+            <div>
+              <div>
+              <img src={props.photoUrl} alt={props.title} className='mySwiperImg' loading='lazy' />
+
+              </div>
+              <div>
+              <div className='slide_product_box_a'>
+              
+              <a href={`/${categoryUrls[props.id]}/${props.id}`} className='slide_product_a'>
+                <span className='slide_product_a_span'> Докладніше</span>
+              </a>
+              
+              </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))
+      }
+    </Swiper>
+    ) : (
+      <div>
+        <span><Preloader/></span>
+      </div>
+    )
+   }
+   </>
+  );
+};

@@ -44,7 +44,8 @@ export const Tab = (props) => {
       </div>
       <div className="tab-content">
         {activeTab === "des" &&
-          <p className="tab-content_p">{product.description}</p>}
+          <p className="tab-content_p">{product.description}</p>
+          }
         {activeTab === "video" &&
           
             <MyCustomVideo

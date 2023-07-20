@@ -1,7 +1,6 @@
 
 import { register } from 'swiper/element/bundle';
 import { EffectFade, Navigation, Pagination } from "swiper";
-
 export const Slider = (props) => {
 
 
@@ -14,6 +13,7 @@ export const Slider = (props) => {
                     <div className="col-md-12">
                         <div className="slide_all">
                             <swiper-container
+                                slidesPerView={`3`}
                                 spaceBetween={30}
                                 effect={"fade"}
                                 navigation={true}

@@ -8,6 +8,8 @@ export const PrujBlock = () => {
         <section className="pruj_block" title="Заміна пружинного блока" id="pruj">
             <div className="container">
                 <div className="row">
+                    <div className="col-md-12">
+
                     <div className="pruj_block_all">
                         <div className="pruj_block_box">
                             <h2 className="pruj_block_h2">Заміна Пружинного Блока</h2>
@@ -37,7 +39,9 @@ export const PrujBlock = () => {
                                 </ul>
                             </div>
                             <div className="pruj_block_content_col">
-                                <h4 className="pruj_block_content_h4">Люкс Варіант</h4>
+                                <div className="pruj_block_content_h4_box">
+                                <h3 className="pruj_block_content_h4">Люкс Варіант</h3>
+                                </div>
                                 <ul className="pruj_block_content_ul">
                                     <li className="pruj_block_content_li pruj_block_content_price">5000 +- грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
@@ -50,6 +54,9 @@ export const PrujBlock = () => {
                             </div>
                         </div>
                         <a href='viber://chat?number=%2B380957162677' className="btn_pruj_block">Замовити Заміну Пружинного Блока</a>
+                    </div>
+
+
                     </div>
                 </div>
             </div>

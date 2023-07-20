@@ -25,7 +25,7 @@ export const getAllProducts = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      return data;
+      return await data;
     } else {
       throw new Error(`Server responded with ${response.status} ${response.statusText}`);
     }

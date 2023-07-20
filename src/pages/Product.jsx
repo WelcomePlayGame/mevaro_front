@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet';
 import {findUrlCategoriesViaIdByProduct} from '../api'
 import { OrderButton } from '../components/order/OrderButton'
 import { StarRating } from '../components/rating/StarRating'
-import { SliderProduct } from '../components/Slider/SliderProduct'
 
 
 
@@ -33,6 +32,10 @@ export const Product = () => {
       findUrlCategoriesViaIdByProduct(id).then((data)=>{setCategoryUrl(data)})
     });
 
+    const getPriceText = () => {
+        const price = product.money * CURRENT_USD;
+        return isNaN(price) ? 'Відсутньо' : `${price}`;
+      };
 
     return (
 
@@ -87,16 +90,13 @@ export const Product = () => {
                                     <li className='page_box_li'>Щільність: {product.density} г/кв.метр</li>
                                     <li className='page_box_li'>Тест Мантирдейла: {product.testMater} циклів</li>
                                     <div className="page_product_price">
-                                        <h4 className='page_product_price_h4'>Вартість: <spna className='page_product_price_h4_span'>{product.money * CURRENT_USD}</spna> грн</h4>
+                                        <h4 className='page_product_price_h4'>Вартість: <span className='page_product_price_h4_span'>{getPriceText()}</span> грн</h4>
                                     </div>
                                 </ul>
                                 <div>
                                         <OrderButton product={product}/>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            {/* <SliderProduct/> */}
                         </div>
                         <div className="box-tab">
                         <Tab id ={id}/>

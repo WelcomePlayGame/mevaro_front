@@ -6,8 +6,10 @@ export function Point() {
 
 
     return (
-        <section className="point" title="Переваги перетяжки меблів в місті Київ від Меваро" id="reasons">
-            <div className="container">
+        <section className="container" title="Переваги перетяжки меблів в місті Київ від Меваро" id="reasons">
+            <div className="row">
+                <div className="col-md-12">
+                <div className="point">
                 <div className="point_liner"></div>
                 <h2 className="point_header" title="Переваги перетяжки меблів Київ">Переваги перетяжки меблів</h2>
                 <div className="row">
@@ -78,6 +80,8 @@ export function Point() {
                             <blockquote className="point_plus_li">+ Виговтолення подушек за Вашими розмірами</blockquote>
                         </div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
         </section>

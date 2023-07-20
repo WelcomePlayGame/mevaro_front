@@ -2,8 +2,8 @@ import { Body } from '../components/Body'
 import { Point } from '../components/Point'
 import { OurWorks } from '../components/OurWorks'
 import { Comment } from '../components/Comment'
-import { Slider } from '../components/Slider/Slider'
 import { Helmet }from 'react-helmet';
+import { SliderProduct } from '../components/Slider/SliderProduct'
 
 
 export const Main = () => {
@@ -23,7 +23,7 @@ export const Main = () => {
             <Point />
             <OurWorks />
             <Comment />
-            <Slider />
+            <SliderProduct/>
         </>
     )
 }
