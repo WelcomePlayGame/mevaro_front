@@ -33,7 +33,7 @@ export const SliderProduct = () => {
     fetchCategoryUrls();
   }, [productList]);
 
-
+  const firstTenProducts = productList.slice(0, 10);
   return (
    <>
    {
@@ -41,7 +41,6 @@ export const SliderProduct = () => {
       <Swiper
       spaceBetween={50}
       slidesPerView={3}
-      loading={lazy}
       breakpoints={{
         375: {
           slidesPerView: 1,
@@ -76,7 +75,7 @@ export const SliderProduct = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {
-        productList.map((props) => (
+        firstTenProducts.map((props) => (
           <SwiperSlide key={props.id} className='SliderProduct'>
             <div>
               <div>

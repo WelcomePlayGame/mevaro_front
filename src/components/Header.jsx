@@ -56,8 +56,9 @@ export function Header() {
             {isNotCategories && (
               <li className="menu_item">
                 <a
-                  href="#box_slider"
+                  href="https://www.facebook.com/www.mevaro.kiev.ua/photos"
                   className="menu_link"
+                  target="_blank"
                   title="Зразки робот від Меваро"
                 >
                   Наші роботи

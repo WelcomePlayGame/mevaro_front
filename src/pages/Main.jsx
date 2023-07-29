@@ -4,6 +4,7 @@ import { OurWorks } from '../components/OurWorks'
 import { Comment } from '../components/Comment'
 import { Helmet }from 'react-helmet';
 import { SliderProduct } from '../components/Slider/SliderProduct'
+import { Reason } from '../components/Reason';
 
 
 export const Main = () => {
@@ -21,9 +22,10 @@ export const Main = () => {
             </div>
             <Body />
             <Point />
+            <Reason/>
             <OurWorks />
-            <Comment />
             <SliderProduct/>
+            <Comment />
         </>
     )
 }

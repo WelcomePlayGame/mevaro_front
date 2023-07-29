@@ -40,37 +40,51 @@ export const Product = () => {
     return (
 
         <section>
-            <Helmet>
-                <title>{`✅ Тканина ${product.title} прекрасно підійде для Ваших меблів`}</title>
-                <meta name="description" content={`Оберіть для себе якісну тканину. Мебельна тканина ${product.title} зі щільностью ${product.density} гр/м2 та тестом Мантердейла ${product.test_mater}. Широкий вибір ткани на любий смак.`} />
-                <meta name="keywords" content={`тканини для дивану, тканина ${product.title} для вашого дивану, ${product.title} якісні тканини`}/>
-                <link rel="canonical" href={`https://mevaro.kiev.ua/categories/${categoryUrl}/${id}`} />
-                <script type="application/ld+json">
-    {`
-      {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": "${product.title}",
-        "image": "${product.photoUrl}",
-        "description": "${product.description}",
-        "brand": {
-          "@type": "Brand",
-          "name": "Mevaro"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "${product.price}",
-          "priceCurrency": "UAH",
-          "availability": "https://schema.org/InStock",
-          "seller": {
-            "@type": "Organization",
-            "name": "Mevaro"
-          }
-        }
-      }
-    `}
-  </script>
-            </Helmet>
+      <Helmet>
+        <title>{`✅ Тканина ${product.title} прекрасно підійде для Ваших меблів`}</title>
+        <meta
+          name="description"
+          content={`Оберіть для себе якісну тканину. Мебельна тканина ${product.title} зі щільностью ${product.density} гр/м2 та тестом Мантердейла ${product.test_mater}. Широкий вибір ткани на любий смак.`}
+        />
+        <meta
+          name="keywords"
+          content={`тканини для дивану, тканина ${product.title} для вашого дивану, ${product.title} якісні тканини`}
+        />
+        <link
+          rel="canonical"
+          href={`https://mevaro.kiev.ua/categories/${categoryUrl}/${id}`}
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "${product.title}",
+              "image": "${product.photoUrl}",
+              "description": "${product.description}",
+              "brand": {
+                "@type": "Brand",
+                "name": "Mevaro"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": ${product.price}, // Убедитесь, что значение цены указано без кавычек
+                "priceCurrency": "UAH",
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "Mevaro"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": ${product.rating}, // Убедитесь, что значение рейтинга указано без кавычек
+                "reviewCount": ${product.reviewCount} // Убедитесь, что значение количества отзывов указано без кавычек
+              }
+            }
+          `}
+        </script>
+      </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="page_product">

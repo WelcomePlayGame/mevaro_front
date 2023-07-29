@@ -68,22 +68,9 @@ export function Point() {
             <>
             <PrujBlock/>
             </>
-            <div className="point_plus">
-                <div className="container">
-                    <div className="col-md-12">
-                        <h3 className="point_plus_header">Меваро проводить Додаткові роботи:</h3>
-                        <div className="block_plus_li">
-                            <blockquote className="point_plus_li">+ Заміна поролона (ППУ) в виробі</blockquote>
-                            <blockquote className="point_plus_li">+ Заміна ДВП, фанери або ДСП</blockquote>
-                            <blockquote className="point_plus_li">+ Заміна пружинного блока</blockquote>
-                            <blockquote className="point_plus_li">+ Заміна або ремонту механізму розкладки</blockquote>
-                            <blockquote className="point_plus_li">+ Виговтолення подушек за Вашими розмірами</blockquote>
-                        </div>
-                    </div>
+
                 </div>
-            </div>
-                </div>
-            </div>
+            </div>  
         </section>
 
     )
