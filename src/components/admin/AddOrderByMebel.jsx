@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Helmet } from 'react-helmet';
 import {Preloader} from '../Preloader'
 import {URL, ORDERBYMEBEL, SELECT, ADD, USER, PASSWORD} from '../../cong'
+import ReactQuill from "react-quill";
 export const AddOrderByMebel = ()=> {
 
     const [adress, setAdress] = useState(``);
@@ -76,13 +77,24 @@ export const AddOrderByMebel = ()=> {
                         />
                     </div>
                     <div className="input_box">
-                        <label>Добавити опис</label>
-                        <textarea type="text"
-                            name="describe"
-                            value={describe}
-                            placeholder="Додати опис"
-                            onChange={(e) => setDescribe(e.target.value)}
-                        />
+                    <label>Додати опис</label>
+                    <ReactQuill
+                    value={describe}
+                    placeholder="Тут можеш написати опис замовлення"
+                    theme="snow"
+                    bounds={".app"}
+                    onChange={setDescribe}
+                    modules={{
+                        toolbar: [
+                            [{ header: [1, 2, 3, 4, false] }],
+                            ["bold", "italic", "underline", "strike"],
+                            [{ list: "ordered" }, { list: "bullet" }],
+                            ["clean"],
+                          ],
+                    }}  
+                    
+                    />
+
                     </div>
                     <div className="input_box">
                         <label>Додати телефон</label>

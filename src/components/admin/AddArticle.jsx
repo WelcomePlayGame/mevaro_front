@@ -1,15 +1,19 @@
-import { FormAddPost } from "./post/FormAddPost"
+import { FormAddArticle } from "./form/FormAddArticle"
+
+export const AddArticle = ()=> {
 
 
 
-export const AddPost = () => {
+
+
+
 
     return (
         <section>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <FormAddPost />
+                        <FormAddArticle />
                     </div>
                 </div>
             </div>

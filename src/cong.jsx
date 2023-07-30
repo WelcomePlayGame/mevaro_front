@@ -16,3 +16,5 @@ export const COMMENTS = `comments/`;
 export const COMMENT = `comment/`;
 export const PRODUCT = `product/`
 export const ORDERBYMEBEL = `orderbymebel/`
+export const ARTICLE = `article/`
+

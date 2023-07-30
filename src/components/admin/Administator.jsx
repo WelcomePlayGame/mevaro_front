@@ -7,6 +7,9 @@ import {EditorCategory} from "./post/editor/EditorCategory"
 import {EditorProduct} from './post/editor/EditorProduct'
 import { AddOrder } from './AddOrder';
 
+import { AddArticle } from './AddArticle';
+
+
 
 export const Administator = () => {
 
@@ -22,6 +25,7 @@ export const Administator = () => {
             <Routes>
                 <Route path='/addcategories' element={<AddCategories/>}/>
                 <Route path='/addpost' element={<AddPost/>}/>
+                <Route path='/addarticle' element={<AddArticle/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/orderbymwbel' element={<AddOrder/>}/>
                 <Route path='/category/editor/:id' element={<EditorCategory/>}/>

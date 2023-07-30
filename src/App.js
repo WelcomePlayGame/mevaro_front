@@ -13,8 +13,8 @@ import { Product } from './pages/Product';
 import { OrderPage } from './components/order/OrderPage'
 import { Success } from './components/success/Success'
 import { FAQ } from './pages/FAQ'
-import { POST } from './pages/Post';
 import { Contact } from './pages/Contact';
+import { Article } from './pages/Article';
 
 
 
@@ -33,7 +33,7 @@ function App() {
             <Route path='/success' element={<Success />} />
             <Route path='/faq' element={<FAQ />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/post' element={<POST />} />
+            <Route path='/article' element={<Article />} />
             <Route path='/categories/' element={<Categories />} exact />
             <Route path='/categories/:url' element={<CategoryByUrl />} />
             <Route path='/:url/:id' element={<Product />} />

@@ -95,9 +95,9 @@ export const OrderModal = ({ isOpen, closeModal, product }) => {
                                     </div>
                                     <div className="box_meter_list">
                                         <ul className='box_meter_ul'>
-                                            <li className='box_meter_li'>від 5 метрів - 5% скидка</li>
-                                            <li className='box_meter_li'>від 10 метрів - 10% скидка  </li>
-                                            <li className='box_meter_li'>від 20 метрів - 15% скидка  </li>
+                                            <li className='box_meter_li'>від 5 метрів - 5% знижка</li>
+                                            <li className='box_meter_li'>від 10 метрів - 10% знижка</li>
+                                            <li className='box_meter_li'>від 20 метрів - 15% знижка</li>
                                         </ul>
                                     </div>
                                         <h5 className='order_form_h5'>Загальна Вартість: {handleSale()} грн</h5>
