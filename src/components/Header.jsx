@@ -92,7 +92,7 @@ export function Header() {
             {!isNotCategories && (
               <li className="menu_item">
                 <Link
-                  to="/post"
+                  to="/article"
                   className="menu_link"
                   title="Корисні статті від Меваро"
                 >

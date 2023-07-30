@@ -3,6 +3,7 @@ import { CategorySelect } from "./CategorySelect";
 import { URL, ADD, PRODUCTS, SELECT, USER, PASSWORD } from "../../../cong"
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
+import ReactQuill from "react-quill";
 
 
 export const FormAddPost = () => {
@@ -76,12 +77,28 @@ export const FormAddPost = () => {
                     </div>
                     <div className="input_box">
                         <label>Добавити опис</label>
-                        <textarea type="text"
+                        {/* <textarea type="text"
                             name="description"
                             value={description}
                             placeholder="Додати опис"
                             onChange={(e) => setDescription(e.target.value)}
-                        />
+                        /> */}
+                    <ReactQuill
+                    value={description}
+                    placeholder="Тут можеш написати опис продукту"
+                    theme="snow"
+                    bounds={".app"}
+                    onChange={setDescription}
+                    modules={{
+                        toolbar: [
+                            [{ header: [1, 2, 3, 4, false] }],
+                            ["bold", "italic", "underline", "strike"],
+                            [{ list: "ordered" }, { list: "bullet" }],
+                            ["clean"],
+                          ],
+                    }}  
+                    
+                    />
                     </div>
                     <div className="input_box">
                         <label>Добавити Фото</label>

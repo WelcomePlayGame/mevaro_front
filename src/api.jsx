@@ -1,4 +1,4 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT} from './cong'
+import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL, SELECT, ADD} from './cong'
 const credentials = `${USER}:${PASSWORD}`
 
 export const getAllCategories = async () => {
@@ -34,6 +34,27 @@ export const getAllProducts = async () => {
     throw error;
   }
 };
+
+export const getAllOrderByMebel = async ()=> {
+try {
+  const response = await fetch(`${URL}${ORDERBYMEBEL}`, {
+    method: `GET`,
+    headers : {
+      'Authorization': `Basic ${btoa(credentials)}`
+    }
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return await data;
+  } else {
+    throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+  }
+
+} catch (e) {
+  console.error(e)
+}
+}
 
 export const getAllOrders = async () => {
   

@@ -21,7 +21,9 @@ export const AdminMenu = () => {
                             <li className="li_admin"><Link to="/" className="a_admin" target="_blanck">Сайт</Link></li>
                             <li className="li_admin"><Link to="/admin/addcategories" className="a_admin">Додати Категорію</Link></li>
                             <li className="li_admin"><Link to="/admin/addpost" className="a_admin">Додати товар</Link></li>
+                            <li className="li_admin"><Link to="/admin/addarticle" className="a_admin">Додати статью</Link></li>
                             <li className="li_admin"><Link to="/admin/dashboard" className="a_admin">Панель</Link></li>
+                            <li className="li_admin"><Link to="/admin/orderbymwbel" className="a_admin"> Замовлення на Перетяжку</Link></li>
                         </ul>
                     </div>
                 </div>

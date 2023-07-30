@@ -2,6 +2,7 @@ import { useState } from "react"
 import { URL, CATEGORIES, ADD, USER, PASSWORD, SELECT } from '../../../cong'
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
+import ReactQuill from "react-quill";
 
 
 export const FormAddCategories = () => {
@@ -83,14 +84,30 @@ export const FormAddCategories = () => {
                     </div>
                     <div className="input_box">
                         <label htmlFor="description">Добавити URL</label>
-                        <textarea
+                        {/* <textarea
                             type="textarea"
                             name="description"
                             value={description}
                             placeholder="Ввести description"
                             id="description"
                             onChange={(e) => setDescription(e.target.value)}
-                        />
+                        /> */}
+                    <ReactQuill
+                    value={description}
+                    placeholder="Тут можеш написати опис категорії"
+                    theme="snow"
+                    bounds={".app"}
+                    onChange={setDescription}
+                    modules={{
+                        toolbar: [
+                            [{ header: [1, 2, 3, 4, false] }],
+                            ["bold", "italic", "underline", "strike"],
+                            [{ list: "ordered" }, { list: "bullet" }],
+                            ["clean"],
+                          ],
+                    }}  
+                    
+                    />    
                     </div>
                     <div className="input_box">
                         <label htmlFor="photo">Завантажати Файл</label>
