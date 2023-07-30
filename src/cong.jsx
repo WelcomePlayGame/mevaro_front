@@ -1,5 +1,5 @@
-export const URL = "https://mevaroserver.kiev.ua/";
-// export const URL = "http://localhost:8080/";
+// export const URL = "https://mevaroserver.kiev.ua/";
+export const URL = "http://localhost:8080/";
 export const CATEGORIES = "categories/";
 export const ADD = "new/";
 export const DELETEALL = `deleteall/`;
@@ -15,3 +15,4 @@ export const CONFIRM = "confirm/";
 export const COMMENTS = `comments/`;
 export const COMMENT = `comment/`;
 export const PRODUCT = `product/`
+export const ORDERBYMEBEL = `orderbymebel/`
