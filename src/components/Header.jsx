@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ImPhone } from "react-icons/im";
+import { Helmet } from 'react-helmet';
+
 
 export function Header() {
   const location = useLocation();
@@ -14,6 +16,21 @@ export function Header() {
 
   return (
     <header>
+                    <Helmet>
+        <title>{`Перетяжка меблів в місті Київ. Безкоштовна Консультація по місту`}</title>
+        <meta
+          name="description"
+          content={`Перетяжка меблів у Києві: професійна перетяжка та оновлення вашої меблі за доступними цінами. Відновіть їх новим виглядом з нами!`}
+        />
+        <meta
+          name="keywords"
+          content={`перетяжка меблів, перетяжка меблів Київ, перетяжка Київ`}
+        />
+        <link
+          rel="canonical"
+          href={`https://mevaro.kiev.ua`}
+        />
+      </Helmet>
       <nav>
         <div className="container">
           <ul
@@ -60,6 +77,7 @@ export function Header() {
                   className="menu_link"
                   target="_blank"
                   title="Зразки робот від Меваро"
+                  rel="noreferrer"
                 >
                   Наші роботи
                 </a>

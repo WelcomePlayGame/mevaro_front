@@ -5,6 +5,7 @@ import { findUrlCategoriesViaIdByProduct } from '../api';
 export const ProductByCategory = ({ product }) => {
   const { id, title, photoUrl } = product;
   const [categoryUrl, setCategoryUrl] = useState('');
+  
 
   useEffect(() => {
     // Создаем асинхронную функцию для использования внутри useEffect

@@ -15,6 +15,7 @@ import { Success } from './components/success/Success'
 import { FAQ } from './pages/FAQ'
 import { Contact } from './pages/Contact';
 import { Article } from './pages/Article';
+import { ArticlePage } from './pages/ArticlePage';
 
 
 
@@ -34,6 +35,7 @@ function App() {
             <Route path='/faq' element={<FAQ />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/article' element={<Article />} />
+            <Route path='/article/:id' element={<ArticlePage />} />
             <Route path='/categories/' element={<Categories />} exact />
             <Route path='/categories/:url' element={<CategoryByUrl />} />
             <Route path='/:url/:id' element={<Product />} />

@@ -1,4 +1,5 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL, SELECT, ADD} from './cong'
+import { wait } from '@testing-library/user-event/dist/utils';
+import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE} from './cong'
 const credentials = `${USER}:${PASSWORD}`
 
 export const getAllCategories = async () => {
@@ -10,7 +11,6 @@ export const getAllCategories = async () => {
         }
     });
     const data = response.json();
-    console.table(data);
     return await data;
 }
 
@@ -181,5 +181,46 @@ export const getListCommentByProduct = async (id) => {
     return null;
   }
   
+  
 }
 
+export const getAllArticle = async () => {
+
+
+try {
+  const response = await fetch(`${URL}${ARTICLE}`, {
+    method: `GET`,
+    headers: {
+      'Authorization': `Basic ${btoa(credentials)}`
+    }
+  });
+
+    if(!response.ok) {
+      return new Error(`Response not ok - ${URL}${ARTICLE}`)
+    }
+    const data = response.json();
+    return  await data;
+
+} catch (e) {
+  console.error(e);
+}
+}
+
+export const getAllArticleById = async (id) => {
+
+  try {
+    const response = await fetch(`${URL}${ARTICLE}${id}`, {
+      method: `GET`,
+      headers: {
+        'Authorization': `Basic ${btoa(credentials)}`
+      }
+    });
+    if(!response.ok) {
+      return new Error(`Response not ok - ${URL}${ARTICLE}${id}`)
+    }
+   return response.json();
+
+  } catch (e) {
+    console.error(e);
+  }
+}

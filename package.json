@@ -27,6 +27,7 @@
     "sitemap-generator": "^8.5.1",
     "stream-http": "^3.2.0",
     "swiper": "^9.4.1",
+    "transliteration": "^2.3.5",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },

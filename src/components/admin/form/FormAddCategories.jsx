@@ -103,6 +103,8 @@ export const FormAddCategories = () => {
                             [{ header: [1, 2, 3, 4, false] }],
                             ["bold", "italic", "underline", "strike"],
                             [{ list: "ordered" }, { list: "bullet" }],
+                            ["link", "image"],
+                            [{ size: ["small", false, "large", "huge"] }],
                             ["clean"],
                           ],
                     }}  
