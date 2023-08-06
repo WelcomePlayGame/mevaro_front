@@ -17,8 +17,9 @@ export const ArticleList = ()=> {
 
 
     return (
-        <section className="container">
-                          <Helmet>
+        <section className="article_box">
+            <div className="container"> 
+        <Helmet>
         <title>{`Корисні статті для перетяжки тканин. Поради для дому`}</title>
         <meta
           name="description"
@@ -34,23 +35,28 @@ export const ArticleList = ()=> {
         />
       </Helmet>
             <div className="row">
+               
             {
                 articlies.map((article) => (
                     <div className="col-md-6">
+                        <div className="list_box">
                         <div>
                             <img src={article.fileUrl} alt={article.title} className="img_articleList"/>
                         </div>
                         <div>
-                            <h2>{article.title}</h2>
+                            <h2 title={`${article.title}`} className="list_box_h2">{article.title}</h2>
                         </div>
-                        <div className="article_list_box">
+                         
+                         <div className="article_list_box">
                             <Link to={`/article/${article.id}`} className="article_list_a">Детальніше</Link>
+                        </div>
                         </div>
                     </div>
                 ))
             }
+            
             </div>
-
+            </div>
         </section>
     )
 }

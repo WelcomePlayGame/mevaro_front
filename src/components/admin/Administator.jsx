@@ -9,11 +9,16 @@ import { AddOrder } from './AddOrder';
 
 import { AddArticle } from './AddArticle';
 
+import { Navigate } from 'react-router-dom';
 
 
 export const Administator = () => {
 
+    const isAuthenticated = sessionStorage.getItem(`isAuthenticated`) === `true`;
 
+    if(!isAuthenticated) {
+        return <Navigate to="/login"/>
+    }
     return (
         <section>
             <div>

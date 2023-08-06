@@ -3,7 +3,7 @@ import {FaInstagram, FaFacebookSquare} from "react-icons/fa";
 export const Footer = () => {
 
     const location = useLocation();
-    const isAdminPage = location.pathname.startsWith('/admin');
+    const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith(`/login`)
 
     if (isAdminPage) {
         return null;

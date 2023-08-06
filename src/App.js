@@ -16,6 +16,7 @@ import { FAQ } from './pages/FAQ'
 import { Contact } from './pages/Contact';
 import { Article } from './pages/Article';
 import { ArticlePage } from './pages/ArticlePage';
+import { Secutity } from './components/admin/security/Secutity';
 
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/categories/' element={<Categories />} exact />
             <Route path='/categories/:url' element={<CategoryByUrl />} />
             <Route path='/:url/:id' element={<Product />} />
+            <Route path='/login' element={<Secutity />} />
             <Route path='/admin/*' element={<Administator />} />
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path='/404' element={<NotFound />} />
