@@ -1,52 +1,58 @@
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { getAllProducts, findUrlCategoriesViaIdByProduct } from '../../api'
-
-// Import Swiper styles
 import 'swiper/css';
-import { lazy, useEffect, useState } from 'react';
+import { getAllProducts, findUrlCategoriesViaIdByProduct } from '../../api';
 import { Preloader } from '../Preloader';
 
 export const SliderProduct = () => {
   const [productList, setProducts] = useState([]);
   const [categoryUrls, setCategoryUrls] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllProducts().then((data) => {
-      setProducts(data);
-    });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const products = await getAllProducts();
+        setProducts(products);
 
-  useEffect(() => {
-    const fetchCategoryUrls = async () => {
-      const urls = [];
-      for (const product of productList) {
-        try {
-          const categoryInfo = await findUrlCategoriesViaIdByProduct(product.id);
-          urls.push(categoryInfo); // Предполагаем, что здесь возвращается строка URL-адреса категории
-        } catch (error) {
-          console.error(error);
-        }
+        const categoryPromises = products.map(async (product) => {
+          try {
+            const categoryInfo = await findUrlCategoriesViaIdByProduct(product.id);
+            return categoryInfo;
+          } catch (error) {
+            console.error(error);
+            return null;
+          }
+        });
+
+        const categories = await Promise.all(categoryPromises);
+        setCategoryUrls(categories.filter((category) => category !== null));
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
       }
-      setCategoryUrls(urls);
     };
 
-    fetchCategoryUrls();
-  }, [productList]);
+    fetchData();
+  }, []);
 
-  const firstTenProducts = productList.slice(0, 10);
+  if (loading) {
+    return (
+      <div>
+        <Preloader />
+      </div>
+    );
+  }
+
+  const firstTenProducts = productList.slice(0, 3);
+
   return (
-   <>
-   {
-    categoryUrls.length > 0 ? (
-      <Swiper
+    <Swiper
       spaceBetween={50}
       slidesPerView={3}
       breakpoints={{
         375: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        390: {
           slidesPerView: 1,
           spaceBetween: 20,
         },
@@ -74,34 +80,24 @@ export const SliderProduct = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {
-        firstTenProducts.map((props) => (
-          <SwiperSlide key={props.id} className='SliderProduct'>
+      {firstTenProducts.map((product) => (
+        <SwiperSlide key={product.id} className='SliderProduct'>
+          <div>
             <div>
-              <div>
-              <img src={props.photoUrl} alt={props.title} className='mySwiperImg' loading='lazy' />
-
-              </div>
-              <div>
+              <img src={product.photoUrl} alt={product.title} className='mySwiperImg' />
+            </div>
+            <div>
               <div className='slide_product_box_a'>
-              
-              <a href={`/${categoryUrls[props.id]}/${props.id}`} className='slide_product_a'>
-                <span className='slide_product_a_span'> Докладніше</span>
-              </a>
-              
-              </div>
+                <a href={`/${categoryUrls[product.id]}/${product.id}`} className='slide_product_a' rel="preload" as="image">
+                  <span className='slide_product_a_span'> Докладніше</span>
+                </a>
               </div>
             </div>
-          </SwiperSlide>
-        ))
-      }
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
-    ) : (
-      <div>
-        <span><Preloader/></span>
-      </div>
-    )
-   }
-   </>
   );
 };
+
+export default SliderProduct;
