@@ -4,7 +4,6 @@ import { getProductById } from '../api'
 import { CURRENT_USD } from '../cong'
 import { Tab } from '../components/tab/Tab'
 import { Helmet } from 'react-helmet';
-import {findUrlCategoriesViaIdByProduct} from '../api'
 import { OrderButton } from '../components/order/OrderButton'
 import { StarRating } from '../components/rating/StarRating'
 
@@ -16,28 +15,31 @@ export const Product = () => {
     const { id } = useParams()
     const [isZoom, setIsZoom] = useState(false);
     const navigate = useNavigate();
-    const token = localStorage.getItem("authToken")
-
+    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+    const [url, setUrl] = useState('')
     const handleClick = () => {
         setIsZoom(!isZoom)
     }
 
 
     useEffect(() => {
-        getProductById(id, token).then((data) => setProduct(data))
+      getProductById(id, token).then((data) => {
+        setProduct(data);
+        if (data.category && data.category.url) {
+          setUrl(data.category.url);
+          console.log(data.category.url);
+        } else {
+          setUrl("");
+          console.log("Category URL not available.");
+        }
+      });
     }, [id]);
-
-    const [categoryUrl, setCategoryUrl] = useState('');
-
-    useEffect(()=>{
-      findUrlCategoriesViaIdByProduct(id, token).then((data)=>{setCategoryUrl(data)})
-    });
-
+    
     const getPriceText = () => {
         const price = product.money * CURRENT_USD;
         return isNaN(price) ? 'Відсутньо' : `${price}`;
       };
-
+     
     return (
 
         <section>
@@ -53,7 +55,7 @@ export const Product = () => {
         />
         <link
           rel="canonical"
-          href={`https://mevaro.kiev.ua/categories/${categoryUrl}/${id}`}
+          href={`https://mevaro.kiev.ua/categories/${url}/${id}`}
         />
         <script type="application/ld+json">
           {`

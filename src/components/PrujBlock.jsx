@@ -43,7 +43,7 @@ export const PrujBlock = () => {
                                 <h3 className="pruj_block_content_h4">Люкс Варіант</h3>
                                 </div>
                                 <ul className="pruj_block_content_ul">
-                                    <li className="pruj_block_content_li pruj_block_content_price">5000 +- грн</li>
+                                    <li className="pruj_block_content_li pruj_block_content_price">5500 +- грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Гарантія 12 місяців</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Безкоштовна Доставка</li>

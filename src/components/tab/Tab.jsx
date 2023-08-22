@@ -11,13 +11,14 @@ export const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('des');
   const [product, setProduct] = useState({})
   const {id}  = useParams()
+  const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
   useEffect(() => {
-    getProductById(id).then((data) => setProduct(data))
-  }, [id])
+    getProductById(id, token).then((data) => setProduct(data))
+  }, [token])
 
 
   return (

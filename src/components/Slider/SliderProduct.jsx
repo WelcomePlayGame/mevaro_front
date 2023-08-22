@@ -1,15 +1,12 @@
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { getProductBySlider } from '../../api'
-
-// Import Swiper styles
-import 'swiper/css';
-import { lazy, useEffect, useState } from 'react';
 import { Preloader } from '../Preloader';
+
 
 export const SliderProduct = () => {
   const [productList, setProducts] = useState([]);
-  const token = localStorage.getItem('authToken');
-
+  const [token, setAuthToken] = useState(localStorage.getItem('authToken'))
   useEffect(()=> {
     getProductBySlider(token).then((data)=> {
       setProducts(data)
@@ -33,28 +30,27 @@ export const SliderProduct = () => {
           spaceBetween: 20,
         },
         576: {
-          slidesPerView: 1,
+          slidesPerView:1,
           spaceBetween: 20,
         },
         767: {
-          slidesPerView: 1,
+          slidesPerView:1,
           spaceBetween: 20,
         },
         991: {
-          slidesPerView: 1,
+          slidesPerView:1,
           spaceBetween: 10,
         },
         1200: {
-          slidesPerView: 2,
-          spaceBetween: 10,
+          slidesPerView:2,
+          spaceBetween: 20,
         },
         1500: {
-          slidesPerView: 3,
-          spaceBetween: 50,
+          slidesPerView:3,
+          spaceBetween: 20,
         },
-      }}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      }
+    }
     >
       {
       productList.map((props) => (

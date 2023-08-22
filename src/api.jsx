@@ -129,10 +129,12 @@ export const getProductById = async (id, token) => {
       }
     }
     )
-    if(!response.ok) {
-      throw new Error('Response not ok')
+    if(response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
     }
-    return response.json();
 
   } catch(error) {
     console.error(error)
