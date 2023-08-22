@@ -5,13 +5,14 @@ import { findUrlCategoriesViaIdByProduct } from '../api';
 export const ProductByCategory = ({ product }) => {
   const { id, title, photoUrl } = product;
   const [categoryUrl, setCategoryUrl] = useState('');
+  const token = localStorage.getItem("authToken")
   
 
   useEffect(() => {
     // Создаем асинхронную функцию для использования внутри useEffect
     const fetchData = async () => {
       try {
-        const data = await findUrlCategoriesViaIdByProduct(id); // Вызываем асинхронный метод findUrlCategoriesViaIdByProduct
+        const data = await findUrlCategoriesViaIdByProduct(id, token ); // Вызываем асинхронный метод findUrlCategoriesViaIdByProduct
         setCategoryUrl(data); // Устанавливаем значение categoryUrl
         console.log(data); // Выводим значение в консоль
       } catch (error) {

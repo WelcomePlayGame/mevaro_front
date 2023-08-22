@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { getAllProducts, findUrlCategoriesViaIdByProduct } from '../../api'
+import { getProductBySlider } from '../../api'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -8,36 +8,18 @@ import { Preloader } from '../Preloader';
 
 export const SliderProduct = () => {
   const [productList, setProducts] = useState([]);
-  const [categoryUrls, setCategoryUrls] = useState([]);
+  const token = localStorage.getItem('authToken');
 
-  useEffect(() => {
-    getAllProducts().then((data) => {
-      setProducts(data);
-    });
-  }, []);
+  useEffect(()=> {
+    getProductBySlider(token).then((data)=> {
+      setProducts(data)
+    })
+  }, [token])
 
-  useEffect(() => {
-    const fetchCategoryUrls = async () => {
-      const urls = [];
-      for (const product of productList) {
-        try {
-          const categoryInfo = await findUrlCategoriesViaIdByProduct(product.id);
-          urls.push(categoryInfo); // Предполагаем, что здесь возвращается строка URL-адреса категории
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      setCategoryUrls(urls);
-    };
-
-    fetchCategoryUrls();
-  }, [productList]);
-
-  const firstTenProducts = productList.slice(0, 10);
   return (
    <>
    {
-    categoryUrls.length > 0 ? (
+    productList.length > 0 ? (
       <Swiper
       spaceBetween={50}
       slidesPerView={3}
@@ -75,7 +57,7 @@ export const SliderProduct = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {
-        firstTenProducts.map((props) => (
+      productList.map((props) => (
           <SwiperSlide key={props.id} className='SliderProduct'>
             <div>
               <div>
@@ -85,7 +67,7 @@ export const SliderProduct = () => {
               <div>
               <div className='slide_product_box_a'>
               
-              <a href={`/${categoryUrls[props.id]}/${props.id}`} className='slide_product_a'>
+              <a href={`/${props.category.url}/${props.id}`} className='slide_product_a'>
                 <span className='slide_product_a_span'> Докладніше</span>
               </a>
               

@@ -1,31 +1,45 @@
 import { useState } from "react"
-
+import {URL_LOGIN, URL} from "../../../cong"
 export const Secutity = ()=> {
-    const [username, setUsername] = useState(``);
-    const [password, setPassword] = useState(``)
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+  
 
-    const serverUsername = `mevaro`
-    const serverpassword = `mevaro`
  
-    const handleSubmit =  (e)=> {
-        e.preventDefault();
+const handleLogin = async (e)=> {
 
-        try {
-            if(username === serverUsername && password === serverpassword) {
-                sessionStorage.setItem(`isAuthenticated`, `true`)
-                window.location.href = '/admin'
-            }
-            else {
-                alert(`Error`)
-            }
+e.preventDefault();
+const headers = {
+    'Content-Type': 'application/json'
+};
+const body = JSON.stringify({
+    login: login,
+    password: password
+});
 
-        } catch (e) {
-            console.error(e)
-        }
+try {
+    const response = await fetch(URL_LOGIN, {
+        method: "POST",
+        headers: headers,
+        body: body,
+    });
 
-
-
+    if(response.ok) {
+        const data = await response.json();
+        localStorage.setItem('authToken', data.token);
+        sessionStorage.setItem('isAuthenticated', true);
+        console.log(data)
+       window.location.href = "/admin"
+    } else {
+        console.log(response.status)
     }
+
+} catch (e) {
+    console.error(`Error`, e)
+}
+
+
+}
 
 
     return (
@@ -33,15 +47,15 @@ export const Secutity = ()=> {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <form className="form_admin" onSubmit={handleSubmit}>
+                        <form className="form_admin" onSubmit={handleLogin}>
                             <div className="form_input_admin">
                             <input
                             type="text"
                             name="username"
-                            value={username}
+                            value={login}
                             title="Введи Имя Админа"
                             placeholder="Введи Имя Админа"
-                            onChange={(e)=>setUsername(e.target.value)}
+                            onChange={(e)=>setLogin(e.target.value)}
                             className="input_admin"
                             />
                             <input

@@ -16,6 +16,7 @@ export const Product = () => {
     const { id } = useParams()
     const [isZoom, setIsZoom] = useState(false);
     const navigate = useNavigate();
+    const token = localStorage.getItem("authToken")
 
     const handleClick = () => {
         setIsZoom(!isZoom)
@@ -23,13 +24,13 @@ export const Product = () => {
 
 
     useEffect(() => {
-        getProductById(id).then((data) => setProduct(data))
+        getProductById(id, token).then((data) => setProduct(data))
     }, [id]);
 
     const [categoryUrl, setCategoryUrl] = useState('');
 
     useEffect(()=>{
-      findUrlCategoriesViaIdByProduct(id).then((data)=>{setCategoryUrl(data)})
+      findUrlCategoriesViaIdByProduct(id, token).then((data)=>{setCategoryUrl(data)})
     });
 
     const getPriceText = () => {

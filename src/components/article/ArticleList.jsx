@@ -8,9 +8,9 @@ import { Helmet } from 'react-helmet';
 export const ArticleList = ()=> {
 
     const [articlies, setArticlies] = useState([])
-    
+    const token = localStorage.getItem("authToken")
     useEffect(() => {
-        getAllArticle().then((data) => {
+        getAllArticle(token).then((data) => {
             setArticlies(data)
         })
     }, []);

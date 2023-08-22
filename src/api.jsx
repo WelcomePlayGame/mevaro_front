@@ -1,25 +1,24 @@
-import { wait } from '@testing-library/user-event/dist/utils';
-import { URL, CATEGORIES, PRODUCTS, CATEGORY, USER, PASSWORD, ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE} from './cong'
-const credentials = `${USER}:${PASSWORD}`
+import { URL, CATEGORIES, PRODUCTS, CATEGORY,  ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE, BYSLIDE} from './cong'
 
-export const getAllCategories = async () => {
+export const getAllCategories = async (token) => {
 
     const response = await fetch(`${URL}${CATEGORIES}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Basic ${btoa(credentials)}`
+          'Authorization': `Bearer ${token}`
         }
     });
+    console.log(token)
     const data = response.json();
     return await data;
 }
 
-export const getAllProducts = async () => {
+export const getAllProducts = async (token) => {
   try {
     const response = await fetch(`${URL}${PRODUCTS}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     });
 
@@ -35,12 +34,32 @@ export const getAllProducts = async () => {
   }
 };
 
-export const getAllOrderByMebel = async ()=> {
+export const getProductBySlider = async (token)=> {
+  try {
+    const response = await fetch(`${URL}${PRODUCTS}${BYSLIDE}`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    if(response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error(error)
+    throw error;
+  }
+}
+
+export const getAllOrderByMebel = async (token)=> {
 try {
   const response = await fetch(`${URL}${ORDERBYMEBEL}`, {
     method: `GET`,
     headers : {
-      'Authorization': `Basic ${btoa(credentials)}`
+      'Authorization': `Bearer ${token}`
     }
   });
 
@@ -56,13 +75,13 @@ try {
 }
 }
 
-export const getAllOrders = async () => {
+export const getAllOrders = async (token) => {
   
   try {
     const response = await fetch(`${URL}${ORDERS}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     });
     if(response.ok) {
@@ -79,12 +98,12 @@ export const getAllOrders = async () => {
 
 }
 
-export const getProductsByCategoriesUrl = async (url) => {
+export const getProductsByCategoriesUrl = async (url, token) => {
   try {
     const response = await fetch(`${URL}${CATEGORIES}${url}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     });
     if (!response.ok) {
@@ -100,13 +119,13 @@ export const getProductsByCategoriesUrl = async (url) => {
 }
 
 
-export const getProductById = async (id) => {
+export const getProductById = async (id, token) => {
 
   try{
     const response = await fetch(`${URL}${PRODUCTS}${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     }
     )
@@ -121,13 +140,13 @@ export const getProductById = async (id) => {
   }
 }  
 
-export const  findUrlCategoriesViaIdByProduct = async (id)=> {
+export const  findUrlCategoriesViaIdByProduct = async (id, token)=> {
 
   try{
     const response = await fetch(`${URL}${CATEGORIES}${CATEGORY}${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     })
     if(!response.ok) {
@@ -142,13 +161,13 @@ export const  findUrlCategoriesViaIdByProduct = async (id)=> {
   
 }
   
-export const updateConfirmOrder = async (id) => {
+export const updateConfirmOrder = async (id, token) => {
 
   try {
     const response =  await fetch(`${URL}${UPDATE}${CONFIRM}${id}`, {
       method: "PATCH",
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     })
     if(!response.ok) {
@@ -163,12 +182,12 @@ export const updateConfirmOrder = async (id) => {
 }
 
 
-export const getListCommentByProduct = async (id) => {
+export const getListCommentByProduct = async (id, token) => {
   try {
     const response = await fetch(`${URL}${COMMENTS}${PRODUCT}${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     });
     if (!response.ok) {
@@ -184,14 +203,14 @@ export const getListCommentByProduct = async (id) => {
   
 }
 
-export const getAllArticle = async () => {
+export const getAllArticle = async (token) => {
 
 
 try {
   const response = await fetch(`${URL}${ARTICLE}`, {
     method: `GET`,
     headers: {
-      'Authorization': `Basic ${btoa(credentials)}`
+      'Authorization': `Bearer ${token}`
     }
   });
 
@@ -206,13 +225,13 @@ try {
 }
 }
 
-export const getAllArticleById = async (id) => {
+export const getAllArticleById = async (id, token) => {
 
   try {
     const response = await fetch(`${URL}${ARTICLE}${id}`, {
       method: `GET`,
       headers: {
-        'Authorization': `Basic ${btoa(credentials)}`
+        'Authorization': `Bearer ${token}`
       }
     });
     if(!response.ok) {
