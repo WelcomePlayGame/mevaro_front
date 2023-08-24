@@ -11,8 +11,8 @@ import { Helmet } from 'react-helmet';
     const [seo_title, setSeoTitle] = useState(``)
     const [seo_describe, setSeoDescribe] = useState(``)
     const [file, setFile] = useState(undefined)
-    const credentials = `${USER}:${PASSWORD}`
     const [confirm] = useState('Створити Статью')
+    const [token, setAuthToken] = useState(localStorage.getItem('authToken'))
     const addarticle = async (e)=> {
         e.preventDefault();
         setIsLoading(true)
@@ -28,7 +28,7 @@ import { Helmet } from 'react-helmet';
             const response = await fetch(`${URL}${ARTICLE}${SELECT}${ADD}`, {
                 method: `POSt`,
                 headers: {
-                    'Authorization': `Basic ${btoa(credentials)}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: formData
             });

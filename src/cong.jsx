@@ -19,3 +19,4 @@ export const ORDERBYMEBEL = `orderbymebel/`
 export const ARTICLE = `article/`
 export const URL_LOGIN = `http://localhost:8080/login`
 export const BYSLIDE = `slider`
+export const REFRESH = `refresh`

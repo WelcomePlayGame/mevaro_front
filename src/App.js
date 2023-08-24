@@ -17,11 +17,43 @@ import { Contact } from './pages/Contact';
 import { Article } from './pages/Article';
 import { ArticlePage } from './pages/ArticlePage';
 import { Secutity } from './components/admin/security/Secutity';
-
+import { URL, REFRESH } from './cong'; import './cong'
+import { useEffect, useState } from 'react';
 
 
 
 function App() {
+
+  const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+
+  const refreshToken = async (token) => {
+    try {
+      const response = await fetch(`${URL}${REFRESH}`, {
+        method: "PUT",
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      if (response.ok) {
+        const userData = await response.json();
+        const newToken = userData.token;
+        setAuthToken(newToken);
+        localStorage.setItem("authToken", newToken);
+        console.log("newToken", newToken)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    const refreshTokenInterval = setInterval(() => {
+      refreshToken(token);
+    }, 360_00_000);
+    return () => {
+      clearInterval(refreshTokenInterval);
+    }
+  });
 
   return (
     <div className="App">

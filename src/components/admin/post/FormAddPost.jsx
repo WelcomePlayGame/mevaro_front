@@ -19,7 +19,8 @@ export const FormAddPost = () => {
     const [price, setPrice] = useState('');
     const [test_mater, setTest_mater] = useState('');
     const [isLoading, setIsLoading] = useState(false)
-    const credentials = `${USER}:${PASSWORD}`
+    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+
 
     const addPost = async (e) => {
         e.preventDefault();
@@ -41,7 +42,7 @@ export const FormAddPost = () => {
         const response = await fetch(`${URL}${PRODUCTS}${SELECT}${ADD}`, {
             method: 'POST',
             headers: {
-                'Authorization': `Basic ${btoa(credentials)}`
+                'Authorization': `Bearer ${token}`
             },
             body: formData,
         })
