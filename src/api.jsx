@@ -219,8 +219,8 @@ try {
     if(!response.ok) {
       return new Error(`Response not ok - ${URL}${ARTICLE}`)
     }
-    const data = response.json();
-    return  await data;
+    const data = await response.json();
+    return  data;
 
 } catch (e) {
   console.error(e);

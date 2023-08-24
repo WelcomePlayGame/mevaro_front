@@ -13,7 +13,8 @@ export const AddOrderByMebel = ()=> {
     const [totalConsumtion, setTotalConsumtion] = useState(0);
     const [totalSum, setTotalSum] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
-    const credentials = `${USER}:${PASSWORD}`
+    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+
     const addOrderByMebel = async (e)=> {
         e.preventDefault();
         setIsLoading(true)
@@ -34,7 +35,7 @@ export const AddOrderByMebel = ()=> {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Basic ${btoa(credentials)}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: jsonData
             });

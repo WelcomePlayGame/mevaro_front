@@ -13,7 +13,7 @@ export const FormAddCategories = () => {
     const [file, setFile] = useState(undefined)
     const [confirm, setConfirm] = useState('Створити Категорію')
     const [isLoading, setIsLoading] = useState(false)
-    const credentials = `${USER}:${PASSWORD}`
+    const [token, setAuthToken] = useState(localStorage.getItem('authToken'))
 
     const addCategory = async (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ export const FormAddCategories = () => {
             const response = await fetch(`${URL}${CATEGORIES}${SELECT}${ADD}`, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Basic ${btoa(credentials)}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: formData,
             });

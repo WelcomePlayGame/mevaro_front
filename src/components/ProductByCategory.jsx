@@ -5,7 +5,7 @@ import { findUrlCategoriesViaIdByProduct } from '../api';
 export const ProductByCategory = ({ product }) => {
   const { id, title, photoUrl } = product;
   const [categoryUrl, setCategoryUrl] = useState('');
-  const token = localStorage.getItem("authToken")
+  const [token, setAuthToken] = useState(localStorage.getItem("authToken"));
   
 
   useEffect(() => {
