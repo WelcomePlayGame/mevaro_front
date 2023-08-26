@@ -39,7 +39,7 @@ function App() {
         const newToken = userData.token;
         setAuthToken(newToken);
         localStorage.setItem("authToken", newToken);
-        console.log("newToken", newToken)
+        console.log("good")
       }
     } catch (error) {
       console.error(error)
@@ -49,11 +49,11 @@ function App() {
   useEffect(() => {
     const refreshTokenInterval = setInterval(() => {
       refreshToken(token);
-    }, 360_00_000);
+    }, 120000);
     return () => {
       clearInterval(refreshTokenInterval);
     }
-  });
+  }, [token]);
 
   return (
     <div className="App">

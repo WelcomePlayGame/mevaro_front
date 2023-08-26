@@ -245,3 +245,23 @@ export const getAllArticleById = async (id, token) => {
     console.error(e);
   }
 }
+
+
+export const getArtilceSlider = async (token)=> {
+  try {
+    const response = await fetch(`${URL}${ARTICLE}${BYSLIDE}`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    if(response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
