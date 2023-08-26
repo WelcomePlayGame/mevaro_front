@@ -1,11 +1,12 @@
 import {  useState } from 'react'
-import {URL, UPDATE, CONFIRM,USER, PASSWORD, ORDERS} from '../../cong'
+import {URL, UPDATE, CONFIRM, ORDERS} from '../../cong'
 
 export const UpdateConfirmOrder = ({order})=> {
 
 const [isConfirm, setConfirmButton] = useState('Підвердити?');
 const [confirm, setConfirm] = useState(order.confirm);
-const credentials = `${USER}:${PASSWORD}`
+const [token] = useState(localStorage.getItem('authToken'))
+
 
 const updateConfirmOrder = async (e)=> {
     e.preventDefault();
@@ -28,7 +29,7 @@ const updateConfirmOrder = async (e)=> {
         const response = await fetch(`${URL}${ORDERS}${UPDATE}${CONFIRM}${order.id}`, {
             method: "PATCH",
             headers: {
-                'Authorization': `Basic ${btoa(credentials)}`
+                'Authorization': `Bearer ${token}`
             },
             body:formData
         });

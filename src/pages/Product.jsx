@@ -6,6 +6,7 @@ import { Tab } from '../components/tab/Tab'
 import { Helmet } from 'react-helmet';
 import { OrderButton } from '../components/order/OrderButton'
 import { StarRating } from '../components/rating/StarRating'
+import { SliderProduct } from '../components/Slider/SliderProduct'
 
 
 
@@ -15,7 +16,7 @@ export const Product = () => {
     const { id } = useParams()
     const [isZoom, setIsZoom] = useState(false);
     const navigate = useNavigate();
-    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+    const [token] = useState(localStorage.getItem("authToken"))
     const [url, setUrl] = useState('')
     const handleClick = () => {
         setIsZoom(!isZoom)
@@ -33,7 +34,7 @@ export const Product = () => {
           console.log("Category URL not available.");
         }
       });
-    }, [id]);
+    }, []);
     
     const getPriceText = () => {
         const price = product.money * CURRENT_USD;

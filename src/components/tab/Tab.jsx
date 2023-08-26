@@ -5,20 +5,21 @@ import { Comments } from "../Comments/Comments";
 import { FaThumbtack } from 'react-icons/fa'
 import { HiOutlineChatAlt2, HiFilm } from 'react-icons/hi'
 import { MyCustomVideo } from "./MyCustomVideo";
+import { SliderProduct } from "../Slider/SliderProduct";
 
 
 export const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('des');
   const [product, setProduct] = useState({})
   const {id}  = useParams()
-  const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+  const [token] = useState(localStorage.getItem("authToken"))
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
   useEffect(() => {
     getProductById(id, token).then((data) => setProduct(data))
-  }, [token])
+  }, [])
 
 
   return (
@@ -45,7 +46,10 @@ export const Tab = (props) => {
       </div>
       <div className="tab-content">
         {activeTab === "des" &&
-          <p className="tab-content_p">{product.description}</p>
+          <div className="tab-content_p">
+           <p>{product.description}</p> 
+           <p><SliderProduct/></p>
+          </div>
           }
         {activeTab === "video" &&
           

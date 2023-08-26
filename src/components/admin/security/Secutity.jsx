@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {URL_LOGIN, URL} from "../../../cong"
+import {LOGIN, REFRESH, URL} from "../../../cong"
 export const Secutity = ()=> {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const body = JSON.stringify({
 });
 
 try {
-    const response = await fetch(URL_LOGIN, {
+    const response = await fetch(`${URL}${LOGIN}`, {
         method: "POST",
         headers: headers,
         body: body,

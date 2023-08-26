@@ -6,7 +6,7 @@ import { CategoriesList } from '../Categories/CategoriesList'
 
 export const Categories = () => {
     const [categories, setCategories] = useState([]);
-    const token = localStorage.getItem('authToken');
+    const [token] = useState(localStorage.getItem('authToken'))
 
     useEffect(() => {
         getAllCategories(token).then((data) => {

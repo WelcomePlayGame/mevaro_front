@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { URL, CATEGORIES, ADD, USER, PASSWORD, SELECT } from '../../../cong'
+import { URL, CATEGORIES, ADD, SELECT } from '../../../cong'
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
 import ReactQuill from "react-quill";
@@ -13,7 +13,7 @@ export const FormAddCategories = () => {
     const [file, setFile] = useState(undefined)
     const [confirm, setConfirm] = useState('Створити Категорію')
     const [isLoading, setIsLoading] = useState(false)
-    const [token, setAuthToken] = useState(localStorage.getItem('authToken'))
+    const [token] = useState(localStorage.getItem('authToken'))
 
     const addCategory = async (e) => {
         e.preventDefault();

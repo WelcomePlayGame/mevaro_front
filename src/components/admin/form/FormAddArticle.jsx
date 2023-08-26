@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
     const [seo_describe, setSeoDescribe] = useState(``)
     const [file, setFile] = useState(undefined)
     const [confirm] = useState('Створити Статью')
-    const [token, setAuthToken] = useState(localStorage.getItem('authToken'))
+    const [token] = useState(localStorage.getItem('authToken'))
     const addarticle = async (e)=> {
         e.preventDefault();
         setIsLoading(true)
