@@ -5,6 +5,7 @@ import { Comment } from '../components/Comment'
 import { Helmet }from 'react-helmet';
 import { SliderProduct } from '../components/Slider/SliderProduct'
 import { Reason } from '../components/Reason';
+import { ArticleSlider } from '../components/Slider/ArticleSlider';
 
 
 export const Main = () => {
@@ -26,6 +27,7 @@ export const Main = () => {
             <OurWorks />
             <SliderProduct/>
             <Comment />
+            {/* <ArticleSlider/> */}
         </>
     )
 }

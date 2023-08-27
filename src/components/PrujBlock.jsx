@@ -1,11 +1,14 @@
 
-export const PrujBlock = () => {
 
+
+
+export const PrujBlock = () => {
+    const isLinkActive = sessionStorage.getItem("isLinkActive");
 
 
     return (
 
-        <section className="pruj_block" title="Заміна пружинного блока" id="pruj">
+        <section className={`pruj_block ${isLinkActive ? "active-animation" : ""}`}   title="Заміна пружинного блока" id="pruj" >
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

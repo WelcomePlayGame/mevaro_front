@@ -4,12 +4,19 @@ import { ImPhone } from "react-icons/im";
 import { Helmet } from 'react-helmet';
 
 
+
 export function Header() {
   const location = useLocation();
   const isCategories = location.pathname.startsWith("/categories");
   const isNotCategories = !isCategories;
   const [isOpen, setIsOpen] = useState(false);
+  const handleLinkFocus = () => {
+    sessionStorage.setItem("isLinkActive", true);
+};
 
+const handleLinkBlur = () => {
+    sessionStorage.removeItem("isLinkActive");
+};
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -87,10 +94,14 @@ export function Header() {
               <li className="menu_item">
                 <a
                   href="/#pruj"
-                  className="menu_link"
+                  className={`menu_link`}
                   title="Контакти компанії Меваро"
+                  onClick={handleLinkFocus}
+
                 >
-                  Замінити Пружинний Блок
+                 <span> 
+                 Замінити Пружинний Блок
+                 </span> 
                 </a>
               </li>
             )}

@@ -5,7 +5,8 @@ import { Comments } from "../Comments/Comments";
 import { FaThumbtack } from 'react-icons/fa'
 import { HiOutlineChatAlt2, HiFilm } from 'react-icons/hi'
 import { MyCustomVideo } from "./MyCustomVideo";
-import { SliderProduct } from "../Slider/SliderProduct";
+import { SliderForProductOne } from "../Slider/SliderForProductOne";
+
 
 
 export const Tab = (props) => {
@@ -48,7 +49,7 @@ export const Tab = (props) => {
         {activeTab === "des" &&
           <div className="tab-content_p">
            <p>{product.description}</p> 
-           <p><SliderProduct/></p>
+          <SliderForProductOne/>
           </div>
           }
         {activeTab === "video" &&

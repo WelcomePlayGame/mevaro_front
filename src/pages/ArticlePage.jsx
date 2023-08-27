@@ -8,7 +8,7 @@ export const ArticlePage = () => {
 
 const {id} =  useParams();
 const [product, setProduct] = useState({});
-const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+const [token] = useState(localStorage.getItem("authToken"))
 
 
 useEffect(() => {
