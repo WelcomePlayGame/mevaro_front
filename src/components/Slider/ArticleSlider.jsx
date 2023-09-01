@@ -10,21 +10,21 @@ export const ArticleSlider = ()=> {
             setArticles(data)}).catch((error)=>console.log(error))
     }, []);
     return (
-        <section className="article_wrapper_slider">
-            <>
-            {
-                articles.map((props)=> (
-                    <div key={props.id}>
-                        <div>
-                            <img src={props.fileUrl}/>
-                        </div>
-                        <div className="article_box">
+        <section className="">
+            <h5 className="article_wrapper_slider_h5">Корисні статті для Вас</h5>
+            <div className="article_wrapper_slider">
 
-                        </div>
+            {
+                articles.map((article)=> (
+                    <div key={article.id} className="article_box">
+                        <img src={article.fileUrl} alt={article.title} className="article_slide_img"/>
+                        <span className="article_slide_title">{article.title.slice(0,20)} ...</span>
+                        <hr className="article_slide_hr"/>
+                        <a href={`/article/${article.id}`} className="article_slide_a">Читати далі</a>
                     </div>
                 ))
             }
-            </>
+              </div>
         </section>
     )
     

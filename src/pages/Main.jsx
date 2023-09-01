@@ -27,7 +27,7 @@ export const Main = () => {
             <OurWorks />
             <SliderProduct/>
             <Comment />
-            {/* <ArticleSlider/> */}
+            <ArticleSlider/>
         </>
     )
 }

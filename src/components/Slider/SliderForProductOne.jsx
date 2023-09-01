@@ -31,7 +31,7 @@ export const SliderForProductOne = ()=> {
                     <img src={product.photoUrl}  alt={product.title} className="sliderforproductone_img"/>
                     <div className="sliderforproductone_title_box">
                     <h5 className="sliderforproductone_title_h5">{product.title}</h5>
-                    <a href={`/${product.category.url}/${product.id}` } className="liderforproductone_a" title={`Дізнатися про тканину ${product.title}`}>Детальніше</a>
+                    <a href={`/${product.category.url}/${product.id}` } className="sliderforproductone_a" title={`Дізнатися про тканину ${product.title}`}>Детальніше</a>
                     </div>
                     </div>
                 </div>
