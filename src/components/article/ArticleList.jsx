@@ -39,7 +39,7 @@ export const ArticleList = ()=> {
                
             {
                 articlies.map((article) => (
-                    <div className="col-md-6">
+                    <div className="col-md-6" key={article.id} >
                         <div className="list_box">
                         <div>
                             <img src={article.fileUrl} alt={article.title} className="img_articleList"/>

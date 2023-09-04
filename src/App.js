@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     const refreshTokenInterval = setInterval(() => {
       refreshToken(token);
-    }, 36000000);
+    }, 600000);
     return () => {
       clearInterval(refreshTokenInterval);
     }
