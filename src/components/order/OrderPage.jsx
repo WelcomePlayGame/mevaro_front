@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ORDERS, URL, ADD, SELECT, USER, PASSWORD } from "../../cong";
 import { sendOrderToTelegram } from "../../telegram";
+import {refreshToken} from "../../api"
 export const OrderPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +20,7 @@ export const OrderPage = () => {
 
   const addOrder = async (e) => {
     e.preventDefault();
-
+    refreshToken();
     const orderData = {
       title: title,
       name: name,
@@ -44,7 +45,7 @@ export const OrderPage = () => {
       const response = await fetch(`${URL}${ORDERS}${SELECT}${ADD}`, {
         method: "POST",
         headers: {
-          Authorization: `Basic ${btoa(credentials)}`,
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
         },
         body: formData,
       });
