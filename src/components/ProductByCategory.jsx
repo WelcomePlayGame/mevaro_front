@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { findUrlCategoriesViaIdByProduct } from '../api';
+import { findUrlCategoriesViaIdByProduct, refreshToken } from '../api';
 
 export const ProductByCategory = ({ product }) => {
   const { id, title, photoUrl } = product;
   const [categoryUrl, setCategoryUrl] = useState('');
-  const [token, setAuthToken] = useState(localStorage.getItem("authToken"));
   
 
   useEffect(() => {
-    // Создаем асинхронную функцию для использования внутри useEffect
     const fetchData = async () => {
       try {
-        const data = await findUrlCategoriesViaIdByProduct(id, token ); // Вызываем асинхронный метод findUrlCategoriesViaIdByProduct
-        setCategoryUrl(data); // Устанавливаем значение categoryUrl
-        console.log(data); // Выводим значение в консоль
+        await refreshToken();
+        const data = await findUrlCategoriesViaIdByProduct(id, sessionStorage.getItem("authToken"));
+        setCategoryUrl(data);
       } catch (error) {
-        console.log('Error:', error);
+        console.error(error);
       }
     };
-
-    fetchData(); // Вызываем асинхронную функцию fetchData
-  }, [id]); // Указываем зависимость id для повторного вызова useEffect при изменении id
+  
+    fetchData();
+  }, []);
+  
 
   return (
     <div className="col-md-6">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import {getListCommentByProduct} from '../../api'
+import {getListCommentByProduct, refreshToken} from '../../api'
 import { StarComment } from "../rating/StarComment";
 import { FaComment } from "react-icons/fa";
 export const Comment = (props) => {
@@ -9,10 +9,10 @@ export const Comment = (props) => {
     const [token] = useState(localStorage.getItem("authToken"))
 
     useEffect(() => {
-      getListCommentByProduct(id, token).then((data) => {
-        setComments(data);
-        console.log(comments)
-      });
+      refreshToken()
+      .then(()=>getListCommentByProduct(id, sessionStorage.getItem("authToken")))
+      .then((data)=> setComments(data))
+      .catch((error)=>console.error(error))
     }, [id]);
   
     return (

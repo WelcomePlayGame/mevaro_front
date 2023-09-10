@@ -20,4 +20,12 @@ export const ARTICLE = `article/`
 export const LOGIN = `login`
 export const BYSLIDE = `slider`
 export const REFRESH = `refresh`
-
+export const USER_NAME = "mevaro"
+export const USER_PASSWORD = "mevaro"
+export const headers = {
+    'Content-Type': 'application/json'
+};
+export const body = JSON.stringify({
+    login: USER_NAME,
+    password: USER_PASSWORD
+});

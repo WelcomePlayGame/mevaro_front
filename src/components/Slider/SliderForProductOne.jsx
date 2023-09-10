@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import {getProductBySlider} from "../../api"
+import {getProductBySlider, refreshToken} from "../../api"
 import {FaEye} from "react-icons/fa";
 
 export const SliderForProductOne = ()=> {
-    const [token] = useState(localStorage.getItem("authToken"));
     const [products, setProducts] = useState([]);
 
     useEffect(()=> {
-        getProductBySlider(token).then((data)=> {
-            setProducts(data);
-        })
+        refreshToken()
+        .then(()=> getProductBySlider(sessionStorage.getItem("authToken")))
+        .then((data)=>setProducts(data))
+        .catch((error)=> console.error(error))
     }, []);
     const newProducts = products.slice(0,1)
 

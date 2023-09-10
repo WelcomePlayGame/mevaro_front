@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
         const [phone, setPhone] = useState(``);
         const [comment, setComment] = useState(``);
         const [product_id] = useState(id)
-        const [token] = useState(localStorage.getItem('authToken'))
+        const [token] = useState(sessionStorage.getItem('authToken'))
 
         const handleRatingChange = (newRating) => {
           console.log(`Ratng - ${newRating}`)

@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react"
-import { getAllCategories } from '../../api'
+import { getAllCategories, refreshToken } from '../../api'
 import { CategoriesList } from '../Categories/CategoriesList'
 
 
 
 export const Categories = () => {
     const [categories, setCategories] = useState([]);
-    const [token] = useState(localStorage.getItem('authToken'))
 
     useEffect(() => {
-        getAllCategories(token).then((data) => {
-            setCategories(data);
-        })
-    }, [token]);
+        refreshToken()
+        .then(()=>getAllCategories(sessionStorage.getItem('authToken')))
+        .then((data)=> setCategories(data))
+    }, []);
 
     return <>
         <CategoriesList categories={categories} />

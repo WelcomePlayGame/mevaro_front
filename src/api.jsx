@@ -1,4 +1,4 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY,  ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE, BYSLIDE} from './cong'
+import { URL, CATEGORIES, PRODUCTS, CATEGORY,  ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE, BYSLIDE, LOGIN, headers, body} from './cong'
 
 export const getAllCategories = async (token) => {
 
@@ -138,7 +138,6 @@ export const getProductById = async (id, token) => {
 
   } catch(error) {
     console.error(error)
-    return error
   }
 }  
 
@@ -264,4 +263,27 @@ export const getArtilceSlider = async (token)=> {
   } catch (error) {
     console.error(error)
   }
+}
+
+
+export const refreshToken = async ()=> {
+
+  try {
+    const response = await fetch(`${URL}${LOGIN}`, {
+      method: "POST",
+      headers : headers,
+      body: body
+    });
+    if(response.ok) {
+      const data = await response.json();
+      sessionStorage.setItem('authToken', data.token);
+    } else {
+      console.log("Error access")
+    }
+
+  } catch(error) {
+    console.log(error)
+  }
+
+
 }

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { getProductBySlider } from '../../api'
+import { getProductBySlider, refreshToken } from '../../api'
 import { Preloader } from '../Preloader';
 
 
 export const SliderProduct = () => {
   const [productList, setProducts] = useState([]);
-  const [token] = useState(localStorage.getItem('authToken'))
-  useEffect(()=> {
-    getProductBySlider(token).then((data)=> {
-      setProducts(data)
-    })
-  }, [token])
+  const [token] = useState(sessionStorage.getItem('authToken'))
+  useEffect(() => {
+    refreshToken()
+      .then(() => getProductBySlider(sessionStorage.getItem('authToken')))
+      .then((data) => setProducts(data))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
    <>

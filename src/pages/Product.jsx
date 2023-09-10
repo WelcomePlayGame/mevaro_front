@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getProductById } from '../api'
+import { getProductById, refreshToken } from '../api'
 import { CURRENT_USD } from '../cong'
 import { Tab } from '../components/tab/Tab'
 import { Helmet } from 'react-helmet';
 import { OrderButton } from '../components/order/OrderButton'
 import { StarRating } from '../components/rating/StarRating'
-import { SliderProduct } from '../components/Slider/SliderProduct'
 
 
 
@@ -16,25 +15,27 @@ export const Product = () => {
     const { id } = useParams()
     const [isZoom, setIsZoom] = useState(false);
     const navigate = useNavigate();
-    const [token] = useState(localStorage.getItem("authToken"))
     const [url, setUrl] = useState('')
     const handleClick = () => {
         setIsZoom(!isZoom)
     }
 
-
     useEffect(() => {
-      getProductById(id, token).then((data) => {
-        setProduct(data);
-        if (data.category && data.category.url) {
-          setUrl(data.category.url);
-          console.log(data.category.url);
-        } else {
-          setUrl("");
-          console.log("Category URL not available.");
-        }
-      });
-    }, []);
+      refreshToken()
+        .then(() => getProductById(id, sessionStorage.getItem('authToken')))
+        .then((data) => {
+          setProduct(data);
+          if (data.category && data.category.url) {
+            setUrl(data.category.url);
+          } else {
+            setUrl("");
+            console.log(`Category URL not found`);
+          }
+        })
+        .catch((error) => console.error(error));
+    }, [id]);
+    
+    
     
     const getPriceText = () => {
         const price = product.money * CURRENT_USD;
@@ -117,7 +118,7 @@ export const Product = () => {
                             </div>
                         </div>
                         <div className="box-tab">
-                        <Tab id ={id}/>
+                        <Tab product={product}/>
                         </div>
 
                     </div>

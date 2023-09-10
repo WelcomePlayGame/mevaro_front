@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProductById } from '../../api'
+import { getProductById , refreshToken } from '../../api'
 import { useParams } from 'react-router-dom'
 import { Comments } from "../Comments/Comments";
 import { FaThumbtack } from 'react-icons/fa'
@@ -9,18 +9,12 @@ import { SliderForProductOne } from "../Slider/SliderForProductOne";
 
 
 
-export const Tab = (props) => {
+export const Tab = ({product}) => {
+  const {id,videoUrl, description} = product;
   const [activeTab, setActiveTab] = useState('des');
-  const [product, setProduct] = useState({})
-  const {id}  = useParams()
-  const [token] = useState(localStorage.getItem("authToken"))
-
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  useEffect(() => {
-    getProductById(id, token).then((data) => setProduct(data))
-  }, [])
 
 
   return (
@@ -48,14 +42,14 @@ export const Tab = (props) => {
       <div className="tab-content">
         {activeTab === "des" &&
           <div className="tab-content_p">
-           <p>{product.description}</p> 
+           <p>{description}</p> 
           <SliderForProductOne/>
           </div>
           }
         {activeTab === "video" &&
           
             <MyCustomVideo
-              url={product.videoUrl}
+              url={videoUrl}
               className='content_video'
             />
         }

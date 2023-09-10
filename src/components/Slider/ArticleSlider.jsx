@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
-import {getArtilceSlider} from "../../api"
+import {getArtilceSlider, refreshToken} from "../../api"
 export const ArticleSlider = ()=> {
     const [token] = useState(localStorage.getItem('authToken'));
     const [articles, setArticles] = useState([]);
 
     useEffect(()=> {
-        getArtilceSlider(token)
-        .then((data)=> {
-            setArticles(data)}).catch((error)=>console.log(error))
+        refreshToken()
+        .then(()=> getArtilceSlider(sessionStorage.getItem('authToken')))
+        .then((data)=> setArticles(data))
+        .catch((error)=> console.error(error))
+        
     }, []);
     return (
         <section className="">

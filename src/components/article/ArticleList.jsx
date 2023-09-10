@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {getAllArticle} from "../../api"
+import {getAllArticle, refreshToken} from "../../api"
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
@@ -8,13 +8,13 @@ import { Helmet } from 'react-helmet';
 export const ArticleList = ()=> {
 
     const [articlies, setArticlies] = useState([])
-    const [token] = useState(localStorage.getItem("authToken"))
 
     useEffect(() => {
-        getAllArticle(token).then((data) => {
-            setArticlies(data)
-        })
-    }, [token]);
+        refreshToken()
+        .then(()=> getAllArticle(sessionStorage.getItem("authToken")))
+        .then((data)=> setArticlies(data))
+        .catch((error)=> console.error(error))
+    }, []);
 
 
     return (
