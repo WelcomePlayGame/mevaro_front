@@ -1,15 +1,16 @@
 import {  useState } from 'react'
 import {URL, UPDATE, CONFIRM, ORDERS} from '../../cong'
+import {refreshToken} from "../../api"
 
 export const UpdateConfirmOrder = ({order})=> {
 
 const [isConfirm, setConfirmButton] = useState('Підвердити?');
 const [confirm, setConfirm] = useState(order.confirm);
-const [token] = useState(localStorage.getItem('authToken'))
 
 
 const updateConfirmOrder = async (e)=> {
     e.preventDefault();
+    refreshToken();
     if(order.confirm===true) {
         setConfirm(!order.confirm)
     } else {
@@ -29,7 +30,7 @@ const updateConfirmOrder = async (e)=> {
         const response = await fetch(`${URL}${ORDERS}${UPDATE}${CONFIRM}${order.id}`, {
             method: "PATCH",
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
             },
             body:formData
         });

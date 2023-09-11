@@ -24,7 +24,7 @@ export const PrujBlock = () => {
                             <div className="pruj_block_content_col">
                                 <h4 className="pruj_block_content_h4">Бюджетний Варіант</h4>
                                 <ul className="pruj_block_content_ul">
-                                    <li className="pruj_block_content_li pruj_block_content_price"> 3900 грн</li>
+                                    <li className="pruj_block_content_li pruj_block_content_price"> 4100 грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Гарантія 12 місяців</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Безкоштовна Доставка</li>
@@ -33,7 +33,7 @@ export const PrujBlock = () => {
                             <div className="pruj_block_content_col">
                                 <h4 className="pruj_block_content_h4">Середній Варіант</h4>
                                 <ul className="pruj_block_content_ul">
-                                    <li className="pruj_block_content_li pruj_block_content_price">4500 грн</li>
+                                    <li className="pruj_block_content_li pruj_block_content_price">4700 грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Гарантія 12 місяців</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Безкоштовна Доставка</li>
@@ -46,7 +46,7 @@ export const PrujBlock = () => {
                                 <h3 className="pruj_block_content_h4">Люкс Варіант</h3>
                                 </div>
                                 <ul className="pruj_block_content_ul">
-                                    <li className="pruj_block_content_li pruj_block_content_price">5500 +- грн</li>
+                                    <li className="pruj_block_content_li pruj_block_content_price">5700 +- грн</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Заміна Пружинного Блока</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Гарантія 12 місяців</li>
                                     <li className="pruj_block_content_li"><span>-</span>  Безкоштовна Доставка</li>

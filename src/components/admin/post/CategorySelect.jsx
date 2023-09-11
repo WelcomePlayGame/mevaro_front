@@ -1,21 +1,23 @@
 
 import { useState, useEffect } from "react"
 import {URL, CATEGORIES} from '../../../cong'
+import {refreshToken} from "../../../api"
 
 
 export const CategorySelect=({ onChange }) => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
+   
 
   
     useEffect(() => {
+      refreshToken();
       const fetchData = async() => {
         try {
           const response = await fetch(`${URL}${CATEGORIES}`, {
             method: "GET",
             headers: {
-              'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
             }
           });
           const data = await response.json();

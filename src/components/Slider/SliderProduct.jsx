@@ -16,15 +16,14 @@ export const SliderProduct = () => {
   return (
    <>
         <section className="slider_product">
-        <h5 className='article_wrapper_slider_h5'>Тканини для перетяжки</h5>
-          <div className='article_wrapper_slider'>
+        <h5 className='slider_product_h5'>Тканини для перетяжки</h5>
+          <div className='slider_product_wrapper'>
             {
                 productList.map((product)=> (
-                    <div key={product.id} className="article_box">
-                        <img src={product.photoUrl} alt={product.title} className="article_slide_img"/>
-                        <span className="article_slide_title">{product.title.slice(0,20)} ...</span>
-                        <hr className="article_slide_hr"/>
-                        <a href={`/${product.category.url}/${product.id}`} className="article_slide_a">Читати далі</a>
+                    <div key={product.id} className="slider_product_box">
+                        <img src={product.photoUrl} alt={product.title} className="slider_product_img"/>
+                        <span className="slider_product_text">{product.title.slice(0,20)} ...</span>
+                        <a href={`/${product.category.url}/${product.id}`} className="slider_product_a">Ознайомитись</a>
                     </div>
                 ))
             }

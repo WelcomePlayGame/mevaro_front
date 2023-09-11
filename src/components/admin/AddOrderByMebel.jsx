@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import {Preloader} from '../Preloader'
 import {URL, ORDERBYMEBEL, SELECT, ADD, USER, PASSWORD} from '../../cong'
 import ReactQuill from "react-quill";
+import {refreshToken} from "../../api"
 export const AddOrderByMebel = ()=> {
 
     const [adress, setAdress] = useState(``);
@@ -13,10 +14,10 @@ export const AddOrderByMebel = ()=> {
     const [totalConsumtion, setTotalConsumtion] = useState(0);
     const [totalSum, setTotalSum] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
-    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
 
     const addOrderByMebel = async (e)=> {
         e.preventDefault();
+        refreshToken();
         setIsLoading(true)
         const dataSend = {
             adress : `${adress}`,
@@ -35,7 +36,7 @@ export const AddOrderByMebel = ()=> {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
                 },
                 body: jsonData
             });

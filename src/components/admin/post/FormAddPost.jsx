@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { CategorySelect } from "./CategorySelect";
-import { URL, ADD, PRODUCTS, SELECT, USER, PASSWORD } from "../../../cong"
+import { URL, ADD, PRODUCTS, SELECT} from "../../../cong"
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
 import ReactQuill from "react-quill";
+import {refreshToken} from "../../../api"
 
 
 export const FormAddPost = () => {
@@ -19,9 +20,8 @@ export const FormAddPost = () => {
     const [price, setPrice] = useState('');
     const [test_mater, setTest_mater] = useState('');
     const [isLoading, setIsLoading] = useState(false)
-    const [token, setAuthToken] = useState(localStorage.getItem("authToken"))
 
-
+    refreshToken();
     const addPost = async (e) => {
         e.preventDefault();
         setIsLoading(true)
@@ -42,7 +42,7 @@ export const FormAddPost = () => {
         const response = await fetch(`${URL}${PRODUCTS}${SELECT}${ADD}`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
             },
             body: formData,
         })
