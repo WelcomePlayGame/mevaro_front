@@ -16,7 +16,6 @@ export const OrderPage = () => {
   const [price] = useState(+parseInt(data.price));
   const [meter] = useState(+parseInt(data.meter));
   const [title] = useState(data.title);
-  const credentials = `${USER}:${PASSWORD}`;
 
   const addOrder = async (e) => {
     e.preventDefault();

@@ -1,7 +1,8 @@
     import { StarRating } from "../rating/StarRating";
     import { useState } from "react";
     import {Comment} from '../Comments/Comment'
-    import { URL, COMMENTS, SELECT, ADD, USER, PASSWORD } from "../../cong";
+    import { URL, COMMENTS, SELECT, ADD} from "../../cong";
+    import {refreshToken} from "../../api"
 import { useParams } from "react-router-dom";
 
 
@@ -13,8 +14,8 @@ import { useParams } from "react-router-dom";
         const [phone, setPhone] = useState(``);
         const [comment, setComment] = useState(``);
         const [product_id] = useState(id)
-        const [token] = useState(sessionStorage.getItem('authToken'))
 
+        refreshToken();
         const handleRatingChange = (newRating) => {
           console.log(`Ratng - ${newRating}`)
           setRating(newRating);
@@ -35,7 +36,7 @@ import { useParams } from "react-router-dom";
           const response = await fetch(`${URL}${COMMENTS}${SELECT}${ADD}`, {
               method: 'POST',
               headers: {
-                  'Authorization': `Bearer ${token}`
+                  'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
               },
               body: formData,
           })

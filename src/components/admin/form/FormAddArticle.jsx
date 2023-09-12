@@ -4,6 +4,7 @@ import {URL, ARTICLE, SELECT, ADD, USER, PASSWORD} from "../../../cong"
 import {Preloader} from "../../Preloader"
 import ReactQuill from "react-quill";
 import { Helmet } from 'react-helmet';
+import {refreshToken} from "../../../api"
  export const FormAddArticle = ()=> {
     const [isLoading, setIsLoading] = useState(false)
     const [title, setTitle] = useState('')
@@ -12,7 +13,8 @@ import { Helmet } from 'react-helmet';
     const [seo_describe, setSeoDescribe] = useState(``)
     const [file, setFile] = useState(undefined)
     const [confirm] = useState('Створити Статью')
-    const [token] = useState(localStorage.getItem('authToken'))
+
+    refreshToken();
     const addarticle = async (e)=> {
         e.preventDefault();
         setIsLoading(true)
@@ -26,9 +28,9 @@ import { Helmet } from 'react-helmet';
 
         try {
             const response = await fetch(`${URL}${ARTICLE}${SELECT}${ADD}`, {
-                method: `POSt`,
+                method: `POST`,
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
                 },
                 body: formData
             });

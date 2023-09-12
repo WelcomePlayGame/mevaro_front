@@ -3,7 +3,7 @@ import { URL, CATEGORIES, ADD, SELECT } from '../../../cong'
 import { Helmet } from 'react-helmet';
 import { Preloader } from "../../Preloader";
 import ReactQuill from "react-quill";
-
+import {refreshToken} from "../../../api"
 
 export const FormAddCategories = () => {
 
@@ -13,8 +13,8 @@ export const FormAddCategories = () => {
     const [file, setFile] = useState(undefined)
     const [confirm, setConfirm] = useState('Створити Категорію')
     const [isLoading, setIsLoading] = useState(false)
-    const [token] = useState(localStorage.getItem('authToken'))
 
+    refreshToken();
     const addCategory = async (e) => {
         e.preventDefault();
         setIsLoading(true)
@@ -28,7 +28,7 @@ export const FormAddCategories = () => {
             const response = await fetch(`${URL}${CATEGORIES}${SELECT}${ADD}`, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${sessionStorage.getItem("authToken")}`
                 },
                 body: formData,
             });
