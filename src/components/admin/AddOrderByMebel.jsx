@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Helmet } from 'react-helmet';
 import {Preloader} from '../Preloader'
-import {URL, ORDERBYMEBEL, SELECT, ADD, USER, PASSWORD} from '../../cong'
+import {URL, ORDERBYMEBEL, SELECT, ADD} from '../../cong'
 import ReactQuill from "react-quill";
 import {refreshToken} from "../../api"
 export const AddOrderByMebel = ()=> {
@@ -14,10 +14,9 @@ export const AddOrderByMebel = ()=> {
     const [totalConsumtion, setTotalConsumtion] = useState(0);
     const [totalSum, setTotalSum] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
-
+    refreshToken();
     const addOrderByMebel = async (e)=> {
         e.preventDefault();
-        refreshToken();
         setIsLoading(true)
         const dataSend = {
             adress : `${adress}`,

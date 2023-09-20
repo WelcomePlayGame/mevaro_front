@@ -5,7 +5,6 @@ import { Preloader } from '../Preloader';
 
 export const SliderProduct = () => {
   const [productList, setProducts] = useState([]);
-  const [token] = useState(sessionStorage.getItem('authToken'))
   useEffect(() => {
     refreshToken()
       .then(() => getProductBySlider(sessionStorage.getItem('authToken')))
