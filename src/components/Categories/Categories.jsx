@@ -1,22 +1,24 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllProducts, refreshToken } from "../../api";
 import { ListProduct } from "./ListProduct";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Preloader } from "../Preloader";
 import { CategorySelect } from "../admin/post/CategorySelect";
+import { CURRENT_USD } from "../../cong";
 
 export const Categories = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(6);
   const [minMoney, setMinMoney] = useState(300);
-  const [maxMoney, setMaxMoney] = useState();
+  const [maxMoney, setMaxMoney] = useState("");
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [test, setTest] = useState("");
   const [isFilter, setIsFilter] = useState(true);
   const [filterName, setFilterName] = useState("Відкрити фільтр");
   const [isLoading, setIsLoading] = useState(false);
+  const [isClaw, setClaw] = useState(false);
 
   const saveData = (key, data) => {
     localStorage.setItem(key, JSON.stringify(data));
@@ -61,11 +63,26 @@ export const Categories = () => {
         product.title.toLowerCase().includes(lowercaseTitle)
       );
     }
+    if (category) {
+      filteredData = filteredData.filter((product) => {
+        return product.category.id === +category;
+      });
+    }
+    if (maxMoney) {
+      filteredData = filteredData.filter((product) => {
+        return product.money * CURRENT_USD <= +maxMoney;
+      });
+    }
+    if (test) {
+      filteredData = filteredData.filter((product) => {
+        return product.testMater <= +test;
+      });
+    }
 
     setIsLoading(false);
     setFilteredProducts(filteredData);
     saveData("filter", filteredData);
-  }, [originalProducts, title]);
+  }, [originalProducts, title, category, maxMoney, test]);
 
   const clearFilter = () => {
     setTitle("");
@@ -82,6 +99,13 @@ export const Categories = () => {
 
   const loading = () => {
     setVisibleProducts((pre) => pre + 3);
+  };
+
+  const handleClaw = () => {
+    setClaw(true);
+    if (isClaw) {
+      setClaw(false);
+    }
   };
 
   return (
@@ -109,6 +133,18 @@ export const Categories = () => {
                 type="number"
                 value={maxMoney}
                 onChange={(e) => setMaxMoney(e.target.value)}
+                id="maxmoney"
+                className="all_product_filter_input"
+              />
+            </div>
+            <div className="all_product_filter_box">
+              <label htmlFor="antiClaw" className="form_label">
+                Вас цікавить антикіготь?
+              </label>
+              <input
+                type="checkbox"
+                checked={isClaw}
+                onChange={handleClaw}
                 id="maxmoney"
                 className="all_product_filter_input"
               />

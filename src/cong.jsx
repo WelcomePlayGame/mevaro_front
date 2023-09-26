@@ -1,5 +1,5 @@
-export const URL = "https://mevaroserver.kiev.ua/";
-// export const URL = "http://localhost:8080/";
+// export const URL = "https://mevaroserver.kiev.ua/";
+export const URL = "http://localhost:8080/";
 export const CATEGORIES = "categories/";
 export const ADD = "new/";
 export const DELETEALL = `deleteall/`;
