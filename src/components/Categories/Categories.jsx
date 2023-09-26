@@ -99,24 +99,8 @@ export const Categories = () => {
           className={`all_product_filter ${
             isFilter ? "all_product_filter_no_active" : ""
           }`}
-          // onSubmit={(e) => {
-          //   e.preventDefault();
-          //   applyFilter();
-          // }}
         >
           <div className="all_product_filter_inputs">
-            <div className="all_product_filter_box">
-              <label htmlFor="minmoney" className="form_label">
-                Мінімальна вартість
-              </label>
-              <input
-                type="number"
-                value={minMoney}
-                id="minmoney"
-                onChange={(e) => setMinMoney(e.target.value)}
-                className="all_product_filter_input"
-              />
-            </div>
             <div className="all_product_filter_box">
               <label htmlFor="maxmoney" className="form_label">
                 Максимальна вартість
@@ -163,8 +147,12 @@ export const Categories = () => {
               />
             </div>
           </div>
-          <button type="submit" className="all_product_filter_btn">
-            Пошук
+          <button
+            type="submit"
+            onClick={clearFilter}
+            className="all_product_filter_btn"
+          >
+            Очистити Фільтр
           </button>
         </form>
         <div
@@ -173,7 +161,6 @@ export const Categories = () => {
           }`}
         >
           <button onClick={handleFilter}>{filterName}</button>
-          <button onClick={clearFilter}>Clear</button>
         </div>
         <div className={`all_product ${isFilter ? "all_product_no" : ""}`}>
           {filteredProducts.slice(0, visibleProducts).map((product) => (
