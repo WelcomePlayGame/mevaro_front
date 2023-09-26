@@ -127,7 +127,7 @@ export const Categories = () => {
           <div className="all_product_filter_inputs">
             <div className="all_product_filter_box">
               <label htmlFor="maxmoney" className="form_label">
-                Максимальна вартість
+                Вартість
               </label>
               <input
                 type="number"
