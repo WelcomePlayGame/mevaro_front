@@ -10,16 +10,15 @@ export const Categories = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(6);
-  const [minMoney, setMinMoney] = useState(300);
-  const [maxMoney, setMaxMoney] = useState("");
+  const [maxMoney, setMaxMoney] = useState(undefined);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [test, setTest] = useState("");
+  const [test, setTest] = useState(undefined);
   const [isFilter, setIsFilter] = useState(true);
   const [filterName, setFilterName] = useState("Відкрити фільтр");
   const [isLoading, setIsLoading] = useState(false);
   const [isClaw, setClaw] = useState(false);
-
+  const [token] = useState(sessionStorage.getItem("authToken"));
   const saveData = (key, data) => {
     localStorage.setItem(key, JSON.stringify(data));
   };
@@ -34,6 +33,7 @@ export const Categories = () => {
     }
   };
 
+  refreshToken();
   useEffect(() => {
     const savedProduct = JSON.parse(localStorage.getItem("products"));
     if (savedProduct) {
@@ -52,7 +52,6 @@ export const Categories = () => {
   }, []);
 
   useEffect(() => {
-    // Фильтруем оригинальные продукты при изменении критериев фильтрации
     setIsLoading(true);
 
     let filteredData = [...originalProducts];
@@ -75,20 +74,26 @@ export const Categories = () => {
     }
     if (test) {
       filteredData = filteredData.filter((product) => {
+        console.log(product.test);
         return product.testMater <= +test;
+      });
+    }
+    if (isClaw) {
+      filteredData = filteredData.filter((product) => {
+        return product.antiClaw === isClaw;
       });
     }
 
     setIsLoading(false);
     setFilteredProducts(filteredData);
     saveData("filter", filteredData);
-  }, [originalProducts, title, category, maxMoney, test]);
+  }, [originalProducts, title, category, maxMoney, test, isClaw]);
 
   const clearFilter = () => {
     setTitle("");
     setCategory("");
-    setMinMoney(0);
-    setMaxMoney(0);
+    setMaxMoney(undefined);
+    setTest(undefined);
 
     const savedProduct = JSON.parse(localStorage.getItem("products"));
     if (savedProduct) {

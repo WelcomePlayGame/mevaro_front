@@ -3,14 +3,17 @@ import { getAllArticleById, refreshToken } from "../api";
 import { useEffect, useState } from "react";
 import { FaBookReader, FaJenkins, FaHandPointDown } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import { SliderProduct } from "../components/Slider/SliderProduct";
 export const ArticlePage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
     refreshToken()
-      .then(() => getAllArticleById(id, localStorage.getItem("authToken")))
+      .then(() => getAllArticleById(id, sessionStorage.getItem("authToken")))
       .then((data) => setProduct(data))
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        throw Error(error);
+      });
   }, [id]);
 
   const createMarkup = (html) => ({ __html: html });
@@ -27,11 +30,11 @@ export const ArticlePage = () => {
           <div className="col-md-12">
             <div className="article_box_page">
               <div className="article_img_box">
-                {" "}
                 <img
                   src={product.fileUrl}
                   alt={product.title}
                   className="article_img"
+                  loading="lazy"
                 />
               </div>
               <div className="article_icon_reader_box">
@@ -53,14 +56,17 @@ export const ArticlePage = () => {
               />
               <div className="article_time_box">
                 <span className="article_time_span">
-                  <span className="face_icon">{<FaJenkins />}</span>&nbsp;&nbsp;{" "}
-                  {product.createAt}{" "}
+                  <span className="face_icon">{<FaJenkins />}</span>&nbsp;&nbsp;
+                  {product.createAt}
                 </span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <>
+        <SliderProduct />
+      </>
     </section>
   );
 };

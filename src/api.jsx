@@ -1,32 +1,49 @@
-import { URL, CATEGORIES, PRODUCTS, CATEGORY,  ORDERS, UPDATE, CONFIRM, COMMENTS, PRODUCT, ORDERBYMEBEL,  ARTICLE, BYSLIDE, LOGIN, headers, body} from './cong'
+import {
+  URL,
+  CATEGORIES,
+  PRODUCTS,
+  CATEGORY,
+  ORDERS,
+  UPDATE,
+  CONFIRM,
+  COMMENTS,
+  PRODUCT,
+  ORDERBYMEBEL,
+  ARTICLE,
+  BYSLIDE,
+  LOGIN,
+  headers,
+  body,
+} from "./cong";
 
 export const getAllCategories = async (token) => {
-
-    const response = await fetch(`${URL}${CATEGORIES}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-    });
-    console.log(token)
-    const data = response.json();
-    return await data;
-}
+  const response = await fetch(`${URL}${CATEGORIES}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  console.log(token);
+  const data = response.json();
+  return await data;
+};
 
 export const getAllProducts = async (token) => {
   try {
     const response = await fetch(`${URL}${PRODUCTS}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (response.ok) {
       const data = await response.json();
       return await data;
     } else {
-      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
   } catch (error) {
     console.error(error);
@@ -34,256 +51,257 @@ export const getAllProducts = async (token) => {
   }
 };
 
-export const getProductBySlider = async (token)=> {
+export const getProductBySlider = async (token) => {
   try {
     const response = await fetch(`${URL}${PRODUCTS}${BYSLIDE}`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
-    if(response.ok) {
+    if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
     throw error;
   }
-}
+};
 
-export const getAllOrderByMebel = async (token)=> {
-try {
-  const response = await fetch(`${URL}${ORDERBYMEBEL}`, {
-    method: `GET`,
-    headers : {
-      'Authorization': `Bearer ${token}`
+export const getAllOrderByMebel = async (token) => {
+  try {
+    const response = await fetch(`${URL}${ORDERBYMEBEL}`, {
+      method: `GET`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return await data;
+    } else {
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
-  });
-
-  if (response.ok) {
-    const data = await response.json();
-    return await data;
-  } else {
-    throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+  } catch (e) {
+    console.error(e);
   }
-
-} catch (e) {
-  console.error(e)
-}
-}
+};
 
 export const getAllOrders = async (token) => {
-  
   try {
     const response = await fetch(`${URL}${ORDERS}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
-    if(response.ok) {
+    if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
-
   } catch (error) {
-    console.error(error)
+    console.error(error);
     throw error;
   }
-
-}
+};
 
 export const getProductsByCategoriesUrl = async (url, token) => {
   try {
     const response = await fetch(`${URL}${CATEGORIES}${url}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (!response.ok) {
-      throw new Error('Response not ok');
+      throw new Error("Response not ok");
     }
-    console.table(response)
+    console.table(response);
     return await response.json();
   } catch (error) {
     console.error(error);
     return null;
   }
-  
-}
-
+};
 
 export const getProductById = async (id, token) => {
-
-  try{
+  try {
     const response = await fetch(`${URL}${PRODUCTS}${id}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    }
-    )
-    if(response.ok) {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
-
-  } catch(error) {
-    console.error(error)
+  } catch (error) {
+    console.error(error);
   }
-}  
+};
 
-export const  findUrlCategoriesViaIdByProduct = async (id, token)=> {
-
-  try{
+export const findUrlCategoriesViaIdByProduct = async (id, token) => {
+  try {
     const response = await fetch(`${URL}${CATEGORIES}${CATEGORY}${id}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    if(!response.ok) {
-      return new Error(`Response ont ok - ${URL}${CATEGORIES}${CATEGORY}${id}`)
-    } 
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      return new Error(`Response ont ok - ${URL}${CATEGORIES}${CATEGORY}${id}`);
+    }
     return response.json();
-
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
     return error;
   }
-  
-}
-  
-export const updateConfirmOrder = async (id, token) => {
+};
 
+export const updateConfirmOrder = async (id, token) => {
   try {
-    const response =  await fetch(`${URL}${UPDATE}${CONFIRM}${id}`, {
+    const response = await fetch(`${URL}${UPDATE}${CONFIRM}${id}`, {
       method: "PATCH",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    if(!response.ok) {
-      return new Error(`Response not ok - ${URL}${UPDATE}${CONFIRM}${id}`)
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      return new Error(`Response not ok - ${URL}${UPDATE}${CONFIRM}${id}`);
     }
     return response;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return error;
   }
-
-}
-
+};
 
 export const getListCommentByProduct = async (id, token) => {
   try {
     const response = await fetch(`${URL}${COMMENTS}${PRODUCT}${id}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (!response.ok) {
-      throw new Error('Response not ok');
+      throw new Error("Response not ok");
     }
-    console.table(response)
+    console.table(response);
     return await response.json();
   } catch (error) {
     console.error(error);
     return null;
   }
-  
-  
-}
+};
 
 export const getAllArticle = async (token) => {
+  try {
+    const response = await fetch(`${URL}${ARTICLE}`, {
+      method: `GET`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-
-try {
-  const response = await fetch(`${URL}${ARTICLE}`, {
-    method: `GET`,
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  });
-
-    if(!response.ok) {
-      return new Error(`Response not ok - ${URL}${ARTICLE}`)
+    if (!response.ok) {
+      return new Error(`Response not ok - ${URL}${ARTICLE}`);
     }
     const data = await response.json();
-    return  data;
-
-} catch (e) {
-  console.error(e);
-}
-}
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 export const getAllArticleById = async (id, token) => {
-
   try {
     const response = await fetch(`${URL}${ARTICLE}${id}`, {
       method: `GET`,
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
-    if(!response.ok) {
-      return new Error(`Response not ok - ${URL}${ARTICLE}${id}`)
+    if (!response.ok) {
+      return new Error(`Response not ok - ${URL}${ARTICLE}${id}`);
     }
-   return response.json();
-
+    return response.json();
   } catch (e) {
     console.error(e);
   }
-}
+};
 
-
-export const getArtilceSlider = async (token)=> {
+export const getArtilceSlider = async (token) => {
   try {
     const response = await fetch(`${URL}${ARTICLE}${BYSLIDE}`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
-    if(response.ok) {
+    if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error(`Server responded with ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server responded with ${response.status} ${response.statusText}`
+      );
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
-
-export const refreshToken = async ()=> {
-
+export const refreshToken = async () => {
   try {
     const response = await fetch(`${URL}${LOGIN}`, {
       method: "POST",
-      headers : headers,
-      body: body
+      headers: headers,
+      body: body,
     });
-    if(response.ok) {
+    if (response.ok) {
       const data = await response.json();
-      sessionStorage.setItem('authToken', data.token);
+      sessionStorage.setItem("authToken", data.token);
     } else {
-      console.log("Error access")
+      console.log("Error access");
     }
-
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    throw Error;
   }
+};
 
-
-}
+export const selectCategory = async (token) => {
+  try {
+    const response = await fetch(`${URL}${CATEGORIES}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      console.log("Error Access");
+    }
+  } catch (error) {
+    throw Error(error);
+  }
+};
