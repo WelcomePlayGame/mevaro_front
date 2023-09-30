@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 import { getArtilceSlider, refreshToken } from "../../api";
+import { Preloader } from "../Preloader";
 export const ArticleSlider = () => {
   const [articles, setArticles] = useState([]);
+  const [isAvilable, setAvilable] = useState(false);
   useEffect(() => {
     refreshToken()
       .then(() => getArtilceSlider(sessionStorage.getItem("authToken")))
       .then((data) => setArticles(data))
       .catch((error) => console.error(error));
+    setAvilable(true);
   }, []);
   return (
-    <section className="">
-      <h5 className="article_wrapper_slider_h5">Корисні статті для Вас</h5>
-      <div className="article_wrapper_slider">
-        {articles.map((article) => (
-          <div key={article.id} className="article_box">
-            <img
-              src={article.fileUrl}
-              alt={article.title}
-              className="article_slide_img"
-              loading="lazy"
-            />
-            <span className="article_slide_title">
-              {article.title.slice(0, 20)} ...
-            </span>
-            <hr className="article_slide_hr" />
-            <a href={`/article/${article.id}`} className="article_slide_a">
-              Читати далі
-            </a>
+    <>
+      {isAvilable ? (
+        <section className="">
+          <h5 className="article_wrapper_slider_h5">Корисні статті для Вас</h5>
+          <div className="article_wrapper_slider">
+            {articles.map((article) => (
+              <div key={article.id} className="article_box">
+                <img
+                  src={article.fileUrl}
+                  alt={article.title}
+                  className="article_slide_img"
+                  loading="lazy"
+                />
+                <span className="article_slide_title">
+                  {article.title.slice(0, 20)} ...
+                </span>
+                <hr className="article_slide_hr" />
+                <a href={`/article/${article.id}`} className="article_slide_a">
+                  Читати далі
+                </a>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      ) : (
+        <Preloader />
+      )}
+    </>
   );
 };

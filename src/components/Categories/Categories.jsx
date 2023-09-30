@@ -18,9 +18,8 @@ export const Categories = () => {
   const [filterName, setFilterName] = useState("Відкрити фільтр");
   const [isLoading, setIsLoading] = useState(false);
   const [isClaw, setClaw] = useState(false);
-  const [token] = useState(sessionStorage.getItem("authToken"));
   const saveData = (key, data) => {
-    localStorage.setItem(key, JSON.stringify(data));
+    sessionStorage.setItem(key, JSON.stringify(data));
   };
 
   const handleFilter = () => {
@@ -35,7 +34,7 @@ export const Categories = () => {
 
   refreshToken();
   useEffect(() => {
-    const savedProduct = JSON.parse(localStorage.getItem("products"));
+    const savedProduct = JSON.parse(sessionStorage.getItem("products"));
     if (savedProduct) {
       setOriginalProducts(savedProduct);
       console.log("Load from localStorage");
@@ -95,7 +94,7 @@ export const Categories = () => {
     setMaxMoney(undefined);
     setTest(undefined);
 
-    const savedProduct = JSON.parse(localStorage.getItem("products"));
+    const savedProduct = JSON.parse(sessionStorage.getItem("products"));
     if (savedProduct) {
       setFilteredProducts(savedProduct);
       console.log("Original products");

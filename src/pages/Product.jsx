@@ -30,7 +30,7 @@ export const Product = () => {
         }
       })
       .catch((error) => console.error(error));
-  }, [id]);
+  }, [id, product.antiClaw]);
 
   const getPriceText = () => {
     const price = product.money * CURRENT_USD;
@@ -123,16 +123,14 @@ export const Product = () => {
                     Тест Мантирдейла: {product.testMater} циклів
                   </li>
                   <li className="page_box_li">
-                    Дозволено з котами: {product.antiClaw ? "антикіготь" : "ні"}
-                    {console.log(product)}
+                    Дозволено з котами: {product.antiClaw ? "так" : "ні"}
                   </li>
                   <div className="page_product_price">
                     <h4 className="page_product_price_h4">
                       Вартість:{" "}
                       <span className="page_product_price_h4_span">
                         {getPriceText()}
-                      </span>{" "}
-                      грн
+                      </span>
                     </h4>
                   </div>
                 </ul>
