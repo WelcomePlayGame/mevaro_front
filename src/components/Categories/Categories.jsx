@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Preloader } from "../Preloader";
 import { CategorySelect } from "../admin/post/CategorySelect";
 import { CURRENT_USD } from "../../cong";
+import { Helmet } from "react-helmet";
 
 export const Categories = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
@@ -48,6 +49,7 @@ export const Categories = () => {
         })
         .catch((error) => console.error(error));
     }
+    setIsLoading(true);
   }, []);
 
   useEffect(() => {
@@ -123,6 +125,18 @@ export const Categories = () => {
       style={{ overflowX: "hidden" }}
     >
       <section>
+        <Helmet>
+          <title>{`✅ Тканини для меблів: вибір ідеального матеріалу для вашого дизайну`}</title>
+          <meta
+            name="description"
+            content={`Великий вибір високоякісних тканин для меблів. Підіберіть ідеальний матеріал для ваших меблів.`}
+          />
+          <meta
+            name="keywords"
+            content={`велюр, рогожка, шенніл, мікровелюр, замша, тканини для перетяжки, тканини для меблів`}
+          />
+          <link rel="canonical" href={`https://mevaro.kiev.ua/categories`} />
+        </Helmet>
         <form
           className={`all_product_filter ${
             isFilter ? "all_product_filter_no_active" : ""

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ImPhone } from "react-icons/im";
-import { Helmet } from 'react-helmet';
-
-
+import { Helmet } from "react-helmet";
 
 export function Header() {
   const location = useLocation();
@@ -12,18 +10,18 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const handleLinkFocus = () => {
     sessionStorage.setItem("isLinkActive", true);
-};
+  };
 
-const handleLinkBlur = () => {
+  const handleLinkBlur = () => {
     sessionStorage.removeItem("isLinkActive");
-};
+  };
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <header>
-                    <Helmet>
+      <Helmet>
         <title>{`Перетяжка меблів в місті Київ. Безкоштовна Консультація по місту`}</title>
         <meta
           name="description"
@@ -33,10 +31,7 @@ const handleLinkBlur = () => {
           name="keywords"
           content={`перетяжка меблів, перетяжка меблів Київ, перетяжка Київ`}
         />
-        <link
-          rel="canonical"
-          href={`https://mevaro.kiev.ua`}
-        />
+        <link rel="canonical" href={`https://mevaro.kiev.ua`} />
       </Helmet>
       <nav>
         <div className="container">
@@ -97,11 +92,8 @@ const handleLinkBlur = () => {
                   className={`menu_link`}
                   title="Контакти компанії Меваро"
                   onClick={handleLinkFocus}
-
                 >
-                 <span> 
-                 Замінити Пружинний Блок
-                 </span> 
+                  <span>Замінити Пружинний Блок</span>
                 </a>
               </li>
             )}
@@ -138,7 +130,11 @@ const handleLinkBlur = () => {
             )}
             {!isNotCategories && (
               <li className="menu_item">
-                <Link to="/contact" className="menu_link" title="FAQ від Меваро">
+                <Link
+                  to="/contact"
+                  className="menu_link"
+                  title="FAQ від Меваро"
+                >
                   Наші Контакти
                 </Link>
               </li>
