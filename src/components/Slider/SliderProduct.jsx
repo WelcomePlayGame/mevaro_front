@@ -30,10 +30,7 @@ export const SliderProduct = () => {
                 <span className="slider_product_text">
                   {product.title.slice(0, 20)} ...
                 </span>
-                <a
-                  href={`/${product.category.url}/${product.id}`}
-                  className="slider_product_a"
-                >
+                <a href={`/product/${product.id}`} className="slider_product_a">
                   Ознайомитись
                 </a>
               </div>

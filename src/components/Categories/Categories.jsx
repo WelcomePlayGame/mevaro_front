@@ -6,6 +6,7 @@ import { Preloader } from "../Preloader";
 import { CategorySelect } from "../admin/post/CategorySelect";
 import { CURRENT_USD } from "../../cong";
 import { Helmet } from "react-helmet";
+import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
 
 export const Categories = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
@@ -137,6 +138,12 @@ export const Categories = () => {
           />
           <link rel="canonical" href={`https://mevaro.kiev.ua/categories`} />
         </Helmet>
+        <Breadcrumbs
+          crumbs={[
+            { label: "Головна", url: `/` },
+            { label: "Список Тканин", url: `/categories` },
+          ]}
+        />
         <form
           className={`all_product_filter ${
             isFilter ? "all_product_filter_no_active" : ""

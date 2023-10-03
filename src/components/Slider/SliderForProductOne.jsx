@@ -34,7 +34,7 @@ export const SliderForProductOne = () => {
                   {product.title}
                 </h5>
                 <a
-                  href={`/${product.category.url}/${product.id}`}
+                  href={`/product/${product.id}`}
                   className="sliderforproductone_a"
                   title={`Дізнатися про тканину ${product.title}`}
                 >

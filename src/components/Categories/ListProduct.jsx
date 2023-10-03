@@ -1,4 +1,5 @@
 export const ListProduct = ({ product }) => {
+  console.log(product);
   return (
     <>
       <div className="product_list_box">

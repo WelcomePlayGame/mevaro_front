@@ -39,12 +39,11 @@ function App() {
             <Route path='/article/:id' element={<ArticlePage />} />
             <Route path='/categories/' element={<Categories />} exact />
             <Route path='/categories/:url' element={<CategoryByUrl />} />
-            <Route path='/:url/:id' element={<Product />} />
+            <Route path='/product/:id' element={<Product />} />
             <Route path='/login' element={<Secutity />} />
             <Route path='/admin/*' element={<Administator />} />
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path='/404' element={<NotFound />} />
-
           </Routes>
           <Footer />
         </BrowserRouter>
