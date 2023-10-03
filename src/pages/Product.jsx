@@ -13,6 +13,7 @@ export const Product = () => {
   const [isZoom, setIsZoom] = useState(false);
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
+  const [title, setTitle] = useState("");
   const handleClick = () => {
     setIsZoom(!isZoom);
   };
@@ -24,8 +25,10 @@ export const Product = () => {
         setProduct(data);
         if (data.category && data.category.url) {
           setUrl(data.category.url);
+          setTitle(data.category.title);
         } else {
           setUrl("");
+          setTitle("");
           console.log(`Category URL not found`);
         }
       })
@@ -34,7 +37,7 @@ export const Product = () => {
 
   const getPriceText = () => {
     const price = product.money * CURRENT_USD;
-    return isNaN(price) ? "Відсутньо" : `${price}`;
+    return isNaN(price) ? "Відсутньо" : `${price} грн`;
   };
 
   return (
@@ -116,6 +119,7 @@ export const Product = () => {
                 <ul className="page_box_ul">
                   <li className="page_box_li">Ширина: {product.width} см</li>
                   <li className="page_box_li">Склад: {product.compoud}</li>
+                  <li className="page_box_li">Категорія: {title}</li>
                   <li className="page_box_li">
                     Щільність: {product.density} г/кв.метр
                   </li>
@@ -127,7 +131,7 @@ export const Product = () => {
                   </li>
                   <div className="page_product_price">
                     <h4 className="page_product_price_h4">
-                      Вартість:{" "}
+                      Вартість:
                       <span className="page_product_price_h4_span">
                         {getPriceText()}
                       </span>
