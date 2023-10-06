@@ -17,10 +17,7 @@
     &_zoom
         display: block
         margin: 0 auto
-        transform: scale(2)
-        position: absolute
-        top: 50%
-        left: 50%
+        transform: scale(1.4)
         z-index: 10
         cursor: zoom-out
         transform-origin: center center /* добавляем этот стиль, чтобы масштабирование происходило от центра изображения */
@@ -60,7 +57,8 @@
         border: none
 .tab-buttons
     display: flex
-    font-size: 17.4px
+    font-size: 15px
+    margin-top: 50px
     button
         padding: 0 17px
         margin: 0 10px
@@ -112,3 +110,50 @@
     border-radius: 10px
     padding: 10px 15px
     cursor: pointer
+
+    // ######restyle product  page
+.product_box
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2 ,0.5fr)
+    row-gap: 20px
+    column-gap: 10px
+.product_box_top_right
+    margin: 0px auto
+.breadcumps
+    display: flex
+    margin-bottom: 20px
+.breadcrumps_a
+    color: #000
+    &:hover
+        color: rgb(29,118,101)
+.product_box_right_desribe
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+.product_h2_title
+    margin-top: 100px
+.product_box_right_span
+    font-size: 17px
+    line-height: 26px
+.product_page
+    padding-top: 200px
+.coast_product
+    display: flex
+    justify-content: center
+    align-content: center
+    margin-top: 30px
+.coast_product_price
+    font-size: 40px
+    color: red
+    font-weight: 900
+.svg
+    fill: red
+    width: 30px
+    height: 30px
+    margin-top: 10px
+.rating_comment
+    display: flex
+    justify-content: center
+.write_comment
+    margin-left: 20px

@@ -23,7 +23,7 @@ export const Comment = (props) => {
             <div className="reviews_box_name">
               <span>
                 <FaComment />
-              </span>{" "}
+              </span>
               {props.name}
             </div>
             <div>{<StarComment rating={props.rating} />}</div>

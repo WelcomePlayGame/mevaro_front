@@ -138,12 +138,12 @@ export const Categories = () => {
           />
           <link rel="canonical" href={`https://mevaro.kiev.ua/categories`} />
         </Helmet>
-        <Breadcrumbs
+        {/* <Breadcrumbs
           crumbs={[
             { label: "Головна", url: `/` },
             { label: "Список Тканин", url: `/categories` },
           ]}
-        />
+        /> */}
         <form
           className={`all_product_filter ${
             isFilter ? "all_product_filter_no_active" : ""

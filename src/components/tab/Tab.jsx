@@ -3,9 +3,12 @@ import { Comments } from "../Comments/Comments";
 import { FaThumbtack } from "react-icons/fa";
 import { HiOutlineChatAlt2, HiFilm } from "react-icons/hi";
 import { MyCustomVideo } from "./MyCustomVideo";
-import { SliderForProductOne } from "../Slider/SliderForProductOne";
 
-export const Tab = ({ product }) => {
+export const Tab = ({
+  product,
+  shouldScrollToComments,
+  setShouldScrollToComments,
+}) => {
   const { id, videoUrl, description } = product;
   const [activeTab, setActiveTab] = useState("des");
   const [show, setShow] = useState(false);
@@ -19,12 +22,26 @@ export const Tab = ({ product }) => {
 
   const desLimit = (props) => {
     if (typeof props === "string") {
-      return props.slice(0, 500);
+      return props.slice(0, 200);
     }
     return props;
   };
 
   const createMarkup = (html) => ({ __html: html });
+
+  useEffect(() => {
+    if (shouldScrollToComments) {
+      // Найдите элемент вкладки "Комментарии" по его id и выполните прокрутку
+      const commentsTab = document.getElementById("commentsTab");
+      if (commentsTab) {
+        commentsTab.scrollIntoView({ behavior: "smooth" });
+      }
+      // Установите состояние shouldScrollToComments обратно в false
+      setShouldScrollToComments(false);
+      handleTabClick("comments");
+    }
+  }, [shouldScrollToComments, setShouldScrollToComments]);
+
   return (
     <>
       <div className="tab-buttons">
@@ -43,6 +60,7 @@ export const Tab = ({ product }) => {
           <h3>{<HiFilm />} Відео тканини</h3>
         </button>
         <button
+          id="commentsTab"
           className={activeTab === "comments" ? "btn_tab_active" : ""}
           onClick={() => handleTabClick("comments")}
         >
@@ -64,13 +82,12 @@ export const Tab = ({ product }) => {
                 {show ? "Сховати опис" : "Показати опис"}
               </button>
             )}
-            <SliderForProductOne />
           </div>
         )}
         {activeTab === "video" && (
           <MyCustomVideo url={videoUrl} className="content_video" />
         )}
-        {activeTab === "comments" && <Comments id={id} />}
+        <div>{activeTab === "comments" && <Comments id={id} />}</div>
       </div>
     </>
   );
