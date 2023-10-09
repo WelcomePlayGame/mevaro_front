@@ -158,7 +158,7 @@ export const Product = () => {
           </div>
         </div> */}
         <div className="product_box">
-          <div className="product_box_top_left">
+          <div className="product_box_top_left" id="first">
             <Breadcrumbs
               crumbs={[
                 { label: "Головна", url: `/` },
@@ -190,7 +190,7 @@ export const Product = () => {
               />
             </div>
           </div>
-          <div className="product_box_top_right">
+          <div className="product_box_top_right" id="second">
             <h2 className="product_h2_title">{product.title}</h2>
             <div className="rating_comment">
               <StarRating />
@@ -234,14 +234,14 @@ export const Product = () => {
             <hr />
             <AuxiliaryCharacteristis />
           </div>
-          <div className="product_box_bottom_left">
+          <div className="product_box_bottom_left" id="third">
             <Tab
               product={product}
               shouldScrollToComments={shouldScrollToComments}
               setShouldScrollToComments={setShouldScrollToComments}
             />
           </div>
-          <div className="product_box_bottom_right">
+          <div className="product_box_bottom_right" id="four">
             <OrderButton product={product} />
           </div>
         </div>

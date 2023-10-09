@@ -46,7 +46,7 @@ export const getAllProducts = async (token) => {
       );
     }
   } catch (error) {
-    console.error(error);
+    window.location.reload();
     throw error;
   }
 };
