@@ -18,7 +18,7 @@ import { Article } from './pages/Article';
 import { ArticlePage } from './pages/ArticlePage';
 import { Secutity } from './components/admin/security/Secutity';
 import {Bed} from "./pages/Bed"
-
+import {Sofa} from "./pages/Sofa"
 
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path='/404' element={<NotFound />} />
             <Route path='/lijko' element={<Bed/>}/>
+            <Route path='/sofa' element={<Sofa/>}/>
           </Routes>
           <Footer />
         </BrowserRouter>
