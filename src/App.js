@@ -17,7 +17,7 @@ import { Contact } from './pages/Contact';
 import { Article } from './pages/Article';
 import { ArticlePage } from './pages/ArticlePage';
 import { Secutity } from './components/admin/security/Secutity';
-
+import {Bed} from "./pages/Bed"
 
 
 
@@ -44,6 +44,7 @@ function App() {
             <Route path='/admin/*' element={<Administator />} />
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path='/404' element={<NotFound />} />
+            <Route path='/lijko' element={<Bed/>}/>
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -26,9 +26,9 @@ export const Main = () => {
       <Point />
       <Reason />
       <OurWorks />
-      <SliderProduct />
+      {/* <SliderProduct /> */}
       <Comment />
-      <ArticleSlider />
+      {/* <ArticleSlider /> */}
     </>
   );
 };
