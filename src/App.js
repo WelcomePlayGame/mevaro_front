@@ -19,9 +19,9 @@ import { ArticlePage } from './pages/ArticlePage';
 import { Secutity } from './components/admin/security/Secutity';
 import {Bed} from "./pages/Bed"
 import {Sofa} from "./pages/Sofa"
-
-
-function App() {
+import {ChairArm} from "./pages/ChairArm"
+import {OfficeArmChair} from "./pages/OfficeArmChair"
+ function App() {
 
   return (
     <div className="App">
@@ -46,6 +46,8 @@ function App() {
             <Route path='/404' element={<NotFound />} />
             <Route path='/lijko' element={<Bed/>}/>
             <Route path='/sofa' element={<Sofa/>}/>
+            <Route path='/armchair' element={<ChairArm/>}/>
+            <Route path='/office_armchair'  element={<OfficeArmChair/>} ></Route>
           </Routes>
           <Footer />
         </BrowserRouter>
