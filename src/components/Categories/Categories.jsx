@@ -223,6 +223,7 @@ export const Categories = () => {
         >
           <button onClick={handleFilter}>{filterName}</button>
         </div>
+        <div></div>
         <div className={`all_product ${isFilter ? "all_product_no" : ""}`}>
           {filteredProducts.slice(0, visibleProducts).map((product) => (
             <ListProduct key={product.id} product={product} />

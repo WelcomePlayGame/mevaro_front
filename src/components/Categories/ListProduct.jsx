@@ -6,7 +6,7 @@ export const ListProduct = ({ product }) => {
         <a href={`/product/${product.id}`} className="product_list_a">
           <img
             src={product.photoUrl}
-            alt={product.title}
+            alt={`Тканина ${product.title}`}
             className="product_list_img"
           />
           <span>

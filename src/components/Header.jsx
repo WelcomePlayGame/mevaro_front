@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ImPhone } from "react-icons/im";
 import { Helmet } from "react-helmet";
-
 export function Header() {
   const location = useLocation();
   const isCategories = location.pathname.startsWith("/categories");
   const isNotCategories = !isCategories;
   const [isOpen, setIsOpen] = useState(false);
+  const [isDrop, setDrop] = useState(false);
+  let linkText = "Перетяжка меблів Київ";
+
   const handleLinkFocus = () => {
     sessionStorage.setItem("isLinkActive", true);
   };
@@ -18,6 +20,20 @@ export function Header() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const showDrop = () => {
+    setDrop(true);
+  };
+  const hideDrop = () => {
+    setDrop(false);
+  };
+
+  if (
+    location.pathname === "/categories" ||
+    location.pathname.startsWith("/product")
+  ) {
+    linkText = "Тканини для меблів";
+  }
 
   return (
     <header>
@@ -46,7 +62,39 @@ export function Header() {
                   className="menu_link"
                   title="Переваги перетяжки меблі"
                 >
-                  Переваги
+                  <div
+                    className="dropdown_container"
+                    onMouseOver={showDrop}
+                    onMouseOut={hideDrop}
+                  >
+                    Перетяжка
+                    <ul className={`drop_list ${isDrop ? "" : "dropdown"}`}>
+                      <li className="dropdown_li">
+                        <a href="/lijko" className="dropdown_a">
+                          Перетяжка ліжка
+                        </a>
+                      </li>
+                      <li className="dropdown_li">
+                        <a href="/sofa" className="dropdown_a">
+                          Перетяжка дивана
+                        </a>
+                      </li>
+                      <li className="dropdown_li">
+                        <a href="/armchair" className="dropdown_a">
+                          Перетяжка крісла
+                        </a>
+                      </li>
+                      <li className="dropdown_li">
+                        <a
+                          href="/office_armchair"
+                          className="dropdown_a"
+                          title=" Перетяжка Офісного крісла"
+                        >
+                          Перетяжка Офісного крісла
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </a>
               </li>
             )}
@@ -88,7 +136,7 @@ export function Header() {
             {isNotCategories && (
               <li className="menu_item">
                 <a
-                  href="/#pruj"
+                  href="/block"
                   className={`menu_link`}
                   title="Контакти компанії Меваро"
                   onClick={handleLinkFocus}
@@ -164,7 +212,7 @@ export function Header() {
                 />
               </a>
               <div className="subheader_text">
-                <h1>Перетяжка меблів Київ</h1>
+                <h1>{linkText}</h1>
               </div>
             </div>
             <div className="col-md-4">

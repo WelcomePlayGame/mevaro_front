@@ -21,6 +21,7 @@ import {Bed} from "./pages/Bed"
 import {Sofa} from "./pages/Sofa"
 import {ChairArm} from "./pages/ChairArm"
 import {OfficeArmChair} from "./pages/OfficeArmChair"
+import {PrujBlock} from "./components/PrujBlock"
  function App() {
 
   return (
@@ -48,6 +49,7 @@ import {OfficeArmChair} from "./pages/OfficeArmChair"
             <Route path='/sofa' element={<Sofa/>}/>
             <Route path='/armchair' element={<ChairArm/>}/>
             <Route path='/office_armchair'  element={<OfficeArmChair/>} ></Route>
+            <Route path='/block' element={<PrujBlock/>}/>
           </Routes>
           <Footer />
         </BrowserRouter>

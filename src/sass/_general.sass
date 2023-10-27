@@ -11,13 +11,13 @@
     .do_it_logo
         display: flex
         justify-content: center
-        align-items: center  
+        align-items: center
     .do_it_des
         font-size: 24px
-        width: 365px    
+        width: 365px
     .do_it_img
         width: 140px
-        height: auto  
+        height: auto
     .do_it_header
         font-size: 30px
     // CSS for section Comment
@@ -28,4 +28,25 @@
             width: 50%
             border: 3px dotted
         .comment_block_h4
-            font-size: 32px   
+            font-size: 32px
+.dropdown
+    display: none
+.dropdown_container
+    display: table-row
+.drop_list
+    position: absolute
+    list-style: none
+    z-index: 1100
+    cursor: pointer
+li.dropdown_li
+    padding: 5px
+    background-color: #f0f0f0
+    cursor: pointer
+    color: var(--color-black)
+    &:hover
+        background-color: var(--color-green)
+.dropdown_a
+    color: var(--color-black)
+    &:hover
+        color: var(--color-black)
+        text-decoration: none
